@@ -1,0 +1,173 @@
+2025/07/04 11:46:27 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:46:46 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:46:46 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:47:49 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:50:17 | ERROR | Create Product Error: Cannot destructure property 'name' of 'req.body' as it is undefined., Data: undefined
+2025/07/04 14:25:07 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:27:00 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:27:02 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:28:20 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:28:28 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:29:19 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:31:38 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:36:16 | ERROR | Create Product Error: Cast to ObjectId failed for value "6867b65fc50de8fdce03be348" (type string) at path "_id" for model "brand", Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"imageUrl":"iphone15.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 14:44:07 | ERROR | Fetch Products Error: Cannot populate path `categorie` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025/07/04 21:39:28 | ERROR | Create Product Error: Cannot read properties of undefined (reading 'filename'), Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"image":"1720104699999-iphone.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 21:40:48 | ERROR | Create Product Error: Cannot read properties of undefined (reading 'filename'), Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"image":"1720104699999-iphone.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 21:42:21 | ERROR | Create Product Error: Cannot read properties of undefined (reading 'filename'), Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"image":"1720104699999-iphone.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/07 20:05:58 | ERROR | Fetch Products Error: Cannot populate path `categorie` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025/07/07 20:08:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:10:13 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:10:40 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:10:48 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:13:29 | ERROR | Fetch Products Error: Product.find is not a function
+2025/07/07 20:13:56 | ERROR | Fetch Products Error: Product.find is not a function
+2025/07/07 20:15:48 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:16:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:17:18 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:18:08 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:18:30 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:20:52 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:26:30 | ERROR | Fetch Products Error: Operation `products.find()` buffering timed out after 10000ms
+2025/07/07 20:26:51 | ERROR | Fetch Products Error: Operation `products.find()` buffering timed out after 10000ms
+2025/07/07 20:27:15 | ERROR | Fetch Products Error: Operation `products.find()` buffering timed out after 10000ms
+2025/07/07 20:28:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:30:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:32:46 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:47:58 | ERROR | Fetch Products Error: Schema hasn't been registered for model "subcategorie".
+Use mongoose.model(name, schema)
+2025/07/07 20:48:35 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:50:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:50:24 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:51:25 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:51:49 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 21:05:40 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 21:06:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 22:41:21 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 22:41:32 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:00:16 | ERROR | Get Product Error: Cannot populate path `categorie` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025/07/08 11:08:32 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:09:37 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:11:59 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:12:00 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:12:25 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:12:30 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:13:22 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:15:38 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:15:49 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:18:53 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:18:53 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:22:46 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:24:17 | ERROR | Fetch Products Error: Schema hasn't been registered for model "Brand".
+Use mongoose.model(name, schema)
+2025/07/08 11:24:35 | ERROR | Fetch Products Error: Schema hasn't been registered for model "SubCategory".
+Use mongoose.model(name, schema)
+2025/07/08 11:24:50 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:25:26 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:26:51 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:26:59 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:29:13 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:32:18 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:33:10 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:36:28 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 18:41:20 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:41:32 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:42:58 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:43:31 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:55:54 | ERROR | Create Product Error: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie", Stack: CastError: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie"
+    at SchemaObjectId.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaType.castForQuery (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:5055:12)
+    at Query._castConditions (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:4604:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.createProduct (C:\mti\NTI\Ecommerce Project\controller\product.controller.js:108:22)
+2025/07/08 18:56:12 | ERROR | Create Product Error: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie", Stack: CastError: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie"
+    at SchemaObjectId.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaType.castForQuery (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:5055:12)
+    at Query._castConditions (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:4604:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.createProduct (C:\mti\NTI\Ecommerce Project\controller\product.controller.js:108:22)
+2025/07/08 19:14:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 19:15:39 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 19:15:57 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 19:16:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:26:48 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:26:49 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:31:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:31:22 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:33:15 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:38:26 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:49:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:49:40 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:49:42 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:50:44 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:51:47 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:15 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:15 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:16 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:16 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:16 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:55:10 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:56:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:56:46 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:57:55 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:58:03 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:58:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:01:41 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:02:25 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:21 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:07:43 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:07:50 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:12:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:13:57 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:28:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:30:18 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:31:26 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:35:30 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:41:37 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:41:56 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:43:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:43:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:44:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:44:28 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:44:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:03 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:13 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:37 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:44 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:48:24 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:49:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:52:27 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:56:25 | ERROR | Fetch Products Error: utils.populate: invalid path. Expected string or array of strings. Got typeof `undefined`
+2025/07/09 12:57:47 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:58:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 13:06:29 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/13 19:03:11 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:03:20 | ERROR | Update Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:15 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:19 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:20 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:20 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/14 18:05:14 | ERROR | Get Product Error: Cast to ObjectId failed for value "cart" (type string) at path "_id" for model "Product"
+2025/07/14 18:09:07 | ERROR | Get Product Error: Cast to ObjectId failed for value "cart" (type string) at path "_id" for model "Product"
+2025/07/14 21:01:59 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:02:19 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:02:21 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:03:48 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:04:00 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:04:57 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:05:29 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.

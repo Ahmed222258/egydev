@@ -1,0 +1,703 @@
+2025/07/04 11:46:27 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:46:46 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:46:46 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:47:49 | ERROR | Fetch Products Error: products is not defined
+2025/07/04 11:49:52 | INFO | Returned cached product list
+2025/07/04 11:50:10 | INFO | Returned cached product list
+2025/07/04 11:50:17 | ERROR | Create Product Error: Cannot destructure property 'name' of 'req.body' as it is undefined., Data: undefined
+2025/07/04 11:53:13 | INFO | Admin created new product. ID: 68679679e063a167683f0880
+2025/07/04 11:54:28 | INFO | Admin created new product. ID: 686796c4e063a167683f0882
+2025/07/04 11:56:14 | INFO | Admin created new product. ID: 6867972e9808bf4a984c42ab
+2025/07/04 11:58:09 | INFO | Admin created new product. ID: 686797a1715dba887e850891
+2025/07/04 11:59:09 | INFO | Admin created new product. ID: 686797dd422e1661504d0948
+2025/07/04 14:03:09 | INFO | Admin created new product. ID: 6867b4ed92eb34b6760f9abd
+2025/07/04 14:09:19 | INFO | Admin created new brand: Nike (ID: 6867b65fc50de8fdce3be348)
+2025/07/04 14:17:14 | INFO | Created new categorie: T-Shirts (ID: 6867b83ae55a1c8d215b6c04)
+2025/07/04 14:22:35 | INFO | Created new subcategorie: Slim Fit (ID: 6867b97be55a1c8d215b6c08)
+2025/07/04 14:24:19 | INFO | Created new subcategorie: Slim Fit (ID: 6867b9e3144780db47140786)
+2025/07/04 14:24:34 | WARN | Categorie not found with name: short
+2025/07/04 14:25:07 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:27:00 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:27:02 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:28:20 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:28:28 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:29:19 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:31:38 | ERROR | Fetch Subcategories Error: Cannot read properties of undefined (reading 'populated')
+2025/07/04 14:35:57 | INFO | Admin created new product. ID: 6867bc9d01edc21fcf8ee9e2
+2025/07/04 14:36:16 | ERROR | Create Product Error: Cast to ObjectId failed for value "6867b65fc50de8fdce03be348" (type string) at path "_id" for model "brand", Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"imageUrl":"iphone15.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 14:44:07 | ERROR | Fetch Products Error: Cannot populate path `categorie` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025/07/04 21:09:11 | INFO | Returned cached product list
+2025/07/04 21:37:28 | INFO | Returned cached product list
+2025/07/04 21:38:10 | INFO | Returned cached product list
+2025/07/04 21:38:27 | INFO | Returned cached product list
+2025/07/04 21:38:43 | INFO | Returned cached product list
+2025/07/04 21:39:03 | INFO | Returned cached product list
+2025/07/04 21:39:28 | ERROR | Create Product Error: Cannot read properties of undefined (reading 'filename'), Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"image":"1720104699999-iphone.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 21:40:48 | ERROR | Create Product Error: Cannot read properties of undefined (reading 'filename'), Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"image":"1720104699999-iphone.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 21:42:21 | ERROR | Create Product Error: Cannot read properties of undefined (reading 'filename'), Data: {"productName":"iPhone 15","description":"Latest iPhone model","price":1200,"stock":20,"deleted":false,"image":"1720104699999-iphone.jpg","brand":"6867b65fc50de8fdce03be348","subcategories":"6867b97be55a1c8d215b6c08"}
+2025/07/04 21:42:58 | INFO | Admin created new product. ID: 686820b2e1b33ea5d1bb1ee7
+2025/07/04 21:43:39 | INFO | Admin created new product. ID: 686820db8204901d8f782288
+2025/07/07 20:00:57 | INFO | Returned cached product list
+2025/07/07 20:01:37 | INFO | Returned cached product list
+2025/07/07 20:05:58 | ERROR | Fetch Products Error: Cannot populate path `categorie` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025/07/07 20:08:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:10:13 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:10:40 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:10:48 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:13:29 | ERROR | Fetch Products Error: Product.find is not a function
+2025/07/07 20:13:56 | ERROR | Fetch Products Error: Product.find is not a function
+2025/07/07 20:15:48 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:16:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:17:18 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:18:08 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:18:30 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:19:11 | INFO | Returned cached product list
+2025/07/07 20:20:52 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:26:30 | ERROR | Fetch Products Error: Operation `products.find()` buffering timed out after 10000ms
+2025/07/07 20:26:51 | ERROR | Fetch Products Error: Operation `products.find()` buffering timed out after 10000ms
+2025/07/07 20:27:15 | ERROR | Fetch Products Error: Operation `products.find()` buffering timed out after 10000ms
+2025/07/07 20:28:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:30:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:32:46 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:47:58 | ERROR | Fetch Products Error: Schema hasn't been registered for model "subcategorie".
+Use mongoose.model(name, schema)
+2025/07/07 20:48:35 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:50:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:50:24 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:51:25 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:51:49 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 20:56:17 | WARN | Categorie not found with name: undefined
+2025/07/07 20:56:39 | WARN | Categorie not found with name: undefined
+2025/07/07 20:56:56 | WARN | Categorie not found with name: undefined
+2025/07/07 20:57:55 | WARN | Categorie not found with name: undefined
+2025/07/07 21:00:45 | WARN | Categorie not found with name: 6867b83ae55a1c8d215b6c04
+2025/07/07 21:01:08 | INFO | Created new subcategorie: undefined (ID: 686c0b6472a21b34c45361ba)
+2025/07/07 21:04:33 | WARN | Categorie not found with name: Clothing
+2025/07/07 21:04:50 | INFO | Created new subcategorie: Slim Fit (ID: 686c0c42d261211ebe110c48)
+2025/07/07 21:05:40 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 21:06:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 22:41:21 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 22:41:32 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/07 22:46:06 | INFO | Returned cached product list
+2025/07/07 22:46:13 | INFO | Returned cached product list
+2025/07/08 10:47:10 | INFO | Returned cached product list
+2025/07/08 10:49:05 | INFO | Returned cached product list
+2025/07/08 10:50:17 | INFO | Returned cached product list
+2025/07/08 10:50:20 | INFO | Returned cached product list
+2025/07/08 10:50:23 | INFO | Returned cached product list
+2025/07/08 10:56:30 | INFO | Returned cached product list
+2025/07/08 10:57:19 | INFO | Returned cached product list
+2025/07/08 11:00:11 | INFO | Returned cached product list
+2025/07/08 11:00:14 | INFO | Returned cached product list
+2025/07/08 11:00:16 | ERROR | Get Product Error: Cannot populate path `categorie` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025/07/08 11:01:29 | INFO | Returned cached product list
+2025/07/08 11:02:21 | INFO | Returned cached product list
+2025/07/08 11:02:28 | INFO | Returned cached product list
+2025/07/08 11:02:54 | INFO | Returned cached product list
+2025/07/08 11:02:59 | INFO | Returned cached product list
+2025/07/08 11:03:12 | INFO | Returned cached product list
+2025/07/08 11:05:13 | INFO | Returned cached product list
+2025/07/08 11:08:32 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:09:37 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:11:59 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:12:00 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:12:25 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:12:30 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:13:22 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:15:38 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:15:49 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:18:53 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:18:53 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:21:01 | INFO | Returned cached product list
+2025/07/08 11:22:46 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:24:17 | ERROR | Fetch Products Error: Schema hasn't been registered for model "Brand".
+Use mongoose.model(name, schema)
+2025/07/08 11:24:35 | ERROR | Fetch Products Error: Schema hasn't been registered for model "SubCategory".
+Use mongoose.model(name, schema)
+2025/07/08 11:24:50 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:25:26 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:26:51 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:26:59 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:29:13 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:32:18 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:33:10 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 11:36:28 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 18:36:00 | INFO | Returned cached categorie list
+2025/07/08 18:36:12 | INFO | Returned cached categorie list
+2025/07/08 18:36:18 | INFO | Returned cached categorie list
+2025/07/08 18:36:36 | INFO | Returned cached subcategorie list
+2025/07/08 18:36:36 | INFO | Returned cached categorie list
+2025/07/08 18:36:38 | INFO | Returned cached subcategorie list
+2025/07/08 18:36:38 | INFO | Returned cached categorie list
+2025/07/08 18:37:03 | INFO | Returned cached brand list
+2025/07/08 18:37:03 | INFO | Returned cached categorie list
+2025/07/08 18:38:09 | INFO | Returned cached brand list
+2025/07/08 18:38:09 | INFO | Returned cached subcategorie list
+2025/07/08 18:38:09 | INFO | Returned cached categorie list
+2025/07/08 18:40:00 | INFO | Returned cached subcategorie list
+2025/07/08 18:40:00 | INFO | Returned cached categorie list
+2025/07/08 18:41:20 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:41:32 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:42:58 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:43:31 | ERROR | Create Product Error: Product validation failed: subcategories.0: Cast to [ObjectId] failed for value "`[ "0: '686d07d08ea0543e9b91f0c2'" ]`" (type string) at path "subcategories.0" because of "CastError", Data: {"productName":"Acdcvf","description":"bhjbh","price":"20","stock":"500","brand":"686d07688ea0543e9b91f0be","subcategories":"0: '686d07d08ea0543e9b91f0c2'"}
+2025/07/08 18:49:43 | INFO | Returned cached brand list
+2025/07/08 18:49:43 | INFO | Returned cached subcategorie list
+2025/07/08 18:49:43 | INFO | Returned cached categorie list
+2025/07/08 18:49:49 | INFO | Returned cached brand list
+2025/07/08 18:49:49 | INFO | Returned cached subcategorie list
+2025/07/08 18:49:49 | INFO | Returned cached categorie list
+2025/07/08 18:50:44 | INFO | Returned cached brand list
+2025/07/08 18:50:44 | INFO | Returned cached subcategorie list
+2025/07/08 18:50:44 | INFO | Returned cached categorie list
+2025/07/08 18:55:54 | ERROR | Create Product Error: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie", Stack: CastError: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie"
+    at SchemaObjectId.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaType.castForQuery (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:5055:12)
+    at Query._castConditions (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:4604:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.createProduct (C:\mti\NTI\Ecommerce Project\controller\product.controller.js:108:22)
+2025/07/08 18:56:12 | ERROR | Create Product Error: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie", Stack: CastError: Cast to ObjectId failed for value "0: '686d07d08ea0543e9b91f0c2'" (type string) at path "_id" for model "subcategorie"
+    at SchemaObjectId.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaType.castForQuery (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:5055:12)
+    at Query._castConditions (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\mti\NTI\Ecommerce Project\node_modules\mongoose\lib\query.js:4604:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.createProduct (C:\mti\NTI\Ecommerce Project\controller\product.controller.js:108:22)
+2025/07/08 19:11:56 | INFO | Returned cached brand list
+2025/07/08 19:11:56 | INFO | Returned cached subcategorie list
+2025/07/08 19:11:56 | INFO | Returned cached categorie list
+2025/07/08 19:12:40 | INFO | Returned cached brand list
+2025/07/08 19:12:40 | INFO | Returned cached subcategorie list
+2025/07/08 19:12:40 | INFO | Returned cached categorie list
+2025/07/08 19:13:54 | INFO | Returned cached brand list
+2025/07/08 19:13:54 | INFO | Returned cached subcategorie list
+2025/07/08 19:13:54 | INFO | Returned cached categorie list
+2025/07/08 19:14:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 19:15:39 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 19:15:57 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/08 19:16:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:25:52 | INFO | Returned cached brand list
+2025/07/09 11:25:52 | INFO | Returned cached subcategorie list
+2025/07/09 11:25:52 | INFO | Returned cached categorie list
+2025/07/09 11:26:48 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:26:49 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:27:27 | INFO | Returned cached brand list
+2025/07/09 11:27:27 | INFO | Returned cached subcategorie list
+2025/07/09 11:27:27 | INFO | Returned cached categorie list
+2025/07/09 11:27:58 | INFO | Returned cached brand list
+2025/07/09 11:27:58 | INFO | Returned cached subcategorie list
+2025/07/09 11:27:58 | INFO | Returned cached categorie list
+2025/07/09 11:30:30 | INFO | Returned cached brand list
+2025/07/09 11:30:30 | INFO | Returned cached subcategorie list
+2025/07/09 11:30:30 | INFO | Returned cached categorie list
+2025/07/09 11:31:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:31:22 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:32:12 | INFO | Returned cached brand list
+2025/07/09 11:32:12 | INFO | Returned cached subcategorie list
+2025/07/09 11:32:12 | INFO | Returned cached categorie list
+2025/07/09 11:33:15 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:38:26 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:41:11 | INFO | Returned cached brand list
+2025/07/09 11:41:11 | INFO | Returned cached subcategorie list
+2025/07/09 11:41:11 | INFO | Returned cached categorie list
+2025/07/09 11:49:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:49:40 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:49:42 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:50:17 | INFO | Returned cached brand list
+2025/07/09 11:50:17 | INFO | Returned cached subcategorie list
+2025/07/09 11:50:17 | INFO | Returned cached categorie list
+2025/07/09 11:50:44 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:51:47 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:15 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:15 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:16 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:16 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:54:16 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:55:10 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:56:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:56:46 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:57:55 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:58:03 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 11:58:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:01:41 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:02:25 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:06:21 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:07:43 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:07:50 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:12:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:13:57 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:28:07 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:30:18 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:31:26 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:35:30 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:41:37 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:41:56 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:43:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:43:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:44:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:44:28 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:44:31 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:01 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:03 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:13 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:37 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:44 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:47:54 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:48:24 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:49:11 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:52:27 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:56:25 | ERROR | Fetch Products Error: utils.populate: invalid path. Expected string or array of strings. Got typeof `undefined`
+2025/07/09 12:57:47 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 12:58:23 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/09 13:06:29 | ERROR | Fetch Products Error: Cannot read properties of undefined (reading 'populated')
+2025/07/10 09:47:44 | INFO | Returned cached brand list
+2025/07/10 09:47:44 | INFO | Returned cached subcategorie list
+2025/07/10 09:47:44 | INFO | Returned cached categorie list
+2025/07/10 09:47:46 | INFO | Returned cached brand list
+2025/07/10 09:47:46 | INFO | Returned cached subcategorie list
+2025/07/10 09:47:46 | INFO | Returned cached categorie list
+2025/07/10 09:47:50 | INFO | Returned cached brand list
+2025/07/10 09:47:50 | INFO | Returned cached subcategorie list
+2025/07/10 09:47:50 | INFO | Returned cached categorie list
+2025/07/10 09:54:24 | INFO | Returned cached brand list
+2025/07/10 09:54:24 | INFO | Returned cached subcategorie list
+2025/07/10 09:54:28 | INFO | Product updated: 686e3158cedb1713df583f12
+2025/07/10 09:54:41 | INFO | Returned cached brand list
+2025/07/10 09:54:41 | INFO | Returned cached subcategorie list
+2025/07/10 09:54:48 | INFO | Product updated: 686e3158cedb1713df583f12
+2025/07/10 09:56:12 | INFO | Returned cached brand list
+2025/07/10 09:56:12 | INFO | Returned cached subcategorie list
+2025/07/10 09:56:16 | INFO | Returned cached brand list
+2025/07/10 09:56:16 | INFO | Returned cached subcategorie list
+2025/07/10 09:56:21 | INFO | Product updated: 686f61ccdb0f94afabbfab5a
+2025/07/10 10:41:23 | INFO | Returned cached brand list
+2025/07/10 10:41:23 | INFO | Returned cached subcategorie list
+2025/07/10 10:41:33 | INFO | Product updated: 686e39b8868bdc1c808b7a67
+2025/07/10 10:41:47 | INFO | Returned cached brand list
+2025/07/10 10:41:47 | INFO | Returned cached subcategorie list
+2025/07/13 16:01:24 | INFO | Returned cached brand list
+2025/07/13 16:01:24 | INFO | Returned cached subcategorie list
+2025/07/13 16:01:24 | INFO | Returned cached categorie list
+2025/07/13 16:02:09 | INFO | Product updated: 6873ae389b50d6a0eeea6191
+2025/07/13 16:11:38 | INFO | Admin created new brand: 7amda (ID: 6873b08a9b50d6a0eeea61bb)
+2025/07/13 16:12:11 | INFO | Admin created new brand: Nike (ID: 6873b0ab9b50d6a0eeea61bd)
+2025/07/13 16:14:56 | INFO | Admin created new brand: addidas (ID: 6873b150a0b57e76eb9f7951)
+2025/07/13 16:15:41 | INFO | Returned cached categorie list
+2025/07/13 16:15:41 | INFO | Returned cached brand list
+2025/07/13 16:15:41 | INFO | Returned cached subcategorie list
+2025/07/13 16:17:37 | INFO | Returned cached brand list
+2025/07/13 16:17:37 | INFO | Returned cached subcategorie list
+2025/07/13 16:17:37 | INFO | Returned cached categorie list
+2025/07/13 16:21:39 | INFO | Created new categorie: kflvgdf (ID: 6873b2e3a0b57e76eb9f7957)
+2025/07/13 16:21:55 | INFO | Created new categorie: 7amada (ID: 6873b2f3a0b57e76eb9f7959)
+2025/07/13 16:24:05 | INFO | Created new categorie: 7amada1 (ID: 6873b3757fa6a5a9a237504a)
+2025/07/13 16:30:43 | INFO | Returned cached categorie list
+2025/07/13 16:31:20 | INFO | Returned cached categorie list
+2025/07/13 16:31:23 | INFO | Returned cached categorie list
+2025/07/13 16:31:48 | INFO | Created new categorie: Women (ID: 6873b5447fa6a5a9a2375050)
+2025/07/13 16:32:32 | INFO | Created new subcategorie: Nike (ID: 6873b5707fa6a5a9a2375055)
+2025/07/13 16:32:58 | INFO | Created new subcategorie: Nike (ID: 6873b58a7fa6a5a9a2375058)
+2025/07/13 16:33:11 | INFO | Returned cached brand list
+2025/07/13 16:33:11 | INFO | Returned cached categorie list
+2025/07/13 17:00:19 | INFO | Returned cached brand list
+2025/07/13 17:00:19 | INFO | Returned cached subcategorie list
+2025/07/13 17:00:19 | INFO | Returned cached categorie list
+2025/07/13 17:08:09 | WARN | Product not found: 686e3158cedb1713df583f12
+2025/07/13 17:08:32 | INFO | Returned cached brand list
+2025/07/13 17:08:32 | INFO | Returned cached subcategorie list
+2025/07/13 17:10:07 | INFO | Product updated: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:11:02 | INFO | Returned cached brand list
+2025/07/13 17:11:02 | INFO | Returned cached subcategorie list
+2025/07/13 17:11:46 | INFO | Product updated: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:12:57 | INFO | Returned cached brand list
+2025/07/13 17:12:57 | INFO | Returned cached subcategorie list
+2025/07/13 17:14:49 | INFO | Product updated: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:23:09 | INFO | Returned cached brand list
+2025/07/13 17:23:09 | INFO | Returned cached subcategorie list
+2025/07/13 17:24:12 | INFO | Returned cached brand list
+2025/07/13 17:24:12 | INFO | Returned cached subcategorie list
+2025/07/13 17:26:38 | WARN | Product not found or already deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:26:43 | WARN | Product not found or already deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:26:47 | WARN | Product not found or already deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:28:28 | WARN | Product not found or already deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:28:57 | INFO | Product marked as deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:29:24 | WARN | Product not found or already deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:29:27 | WARN | Product not found or already deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:29:47 | INFO | Product marked as deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:33:31 | WARN | Product not found or already deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:33:44 | WARN | Product not found or already deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:36:40 | INFO | Product marked as deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:36:44 | WARN | Product not found or already deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:39:32 | INFO | Product restored: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:39:36 | INFO | Product restored: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:39:49 | INFO | Product deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:43:05 | INFO | Product deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:43:14 | INFO | Product restored: 6873bbe3bdf147e4db03f2f1
+2025/07/13 17:43:17 | INFO | Product restored: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:45:07 | INFO | Product deleted: 6873bc00bdf147e4db03f2f3
+2025/07/13 17:45:22 | INFO | Product restored: 6873bc00bdf147e4db03f2f3
+2025/07/13 18:01:54 | INFO | Brand deleted: 686d07688ea0543e9b91f0be
+2025/07/13 18:01:59 | INFO | Brand restored: 686d07688ea0543e9b91f0be
+2025/07/13 18:02:03 | INFO | Brand deleted: 686d07688ea0543e9b91f0be
+2025/07/13 18:02:17 | INFO | Brand restored: 686d07688ea0543e9b91f0be
+2025/07/13 18:02:24 | INFO | Brand deleted: 6873b150a0b57e76eb9f7951
+2025/07/13 18:02:41 | INFO | Brand deleted: 686d07688ea0543e9b91f0be
+2025/07/13 18:03:00 | INFO | Brand restored: 686d07688ea0543e9b91f0be
+2025/07/13 18:03:05 | INFO | Brand restored: 6873b150a0b57e76eb9f7951
+2025/07/13 18:04:44 | INFO | Brand deleted: 6873b150a0b57e76eb9f7951
+2025/07/13 18:08:20 | INFO | Returned cached brand list
+2025/07/13 18:08:20 | INFO | Returned cached subcategorie list
+2025/07/13 18:08:20 | INFO | Returned cached categorie list
+2025/07/13 18:11:13 | INFO | Returned cached brand list
+2025/07/13 18:11:13 | INFO | Returned cached subcategorie list
+2025/07/13 18:11:13 | INFO | Returned cached categorie list
+2025/07/13 18:11:22 | INFO | Returned cached brand list
+2025/07/13 18:11:25 | INFO | Brand deleted: 686d07688ea0543e9b91f0be
+2025/07/13 18:11:36 | INFO | Returned cached subcategorie list
+2025/07/13 18:11:36 | INFO | Returned cached categorie list
+2025/07/13 18:11:42 | INFO | Returned cached brand list
+2025/07/13 18:11:45 | INFO | Brand restored: 686d07688ea0543e9b91f0be
+2025/07/13 18:11:49 | INFO | Brand restored: 6873b150a0b57e76eb9f7951
+2025/07/13 18:11:53 | INFO | Returned cached subcategorie list
+2025/07/13 18:11:53 | INFO | Returned cached categorie list
+2025/07/13 18:24:10 | INFO | Returned cached categorie list
+2025/07/13 18:24:12 | INFO | Returned cached categorie list
+2025/07/13 18:27:02 | INFO | Returned cached categorie list
+2025/07/13 18:27:05 | INFO | Returned cached categorie list
+2025/07/13 18:27:10 | INFO | Categorie deleted: 686d078d8ea0543e9b91f0c0
+2025/07/13 18:27:31 | INFO | Categorie deleted: 6873b5447fa6a5a9a2375050
+2025/07/13 18:33:24 | INFO | Returned cached categorie list
+2025/07/13 18:34:03 | INFO | Admin created new brand: 7amadda (ID: 6873d1eb7dc19636df05687a)
+2025/07/13 18:35:39 | INFO | Brand deleted: 6873d1eb7dc19636df05687a
+2025/07/13 18:36:09 | INFO | Returned cached categorie list
+2025/07/13 18:36:25 | INFO | Created new categorie: cvxv (ID: 6873d2797dc19636df056880)
+2025/07/13 18:36:32 | INFO | Categorie deleted: 6873d2797dc19636df056880
+2025/07/13 18:41:29 | INFO | Returned cached categorie list
+2025/07/13 18:41:37 | INFO | Created new categorie: sdsa (ID: 6873d3b17dc19636df056887)
+2025/07/13 18:41:54 | INFO | Categorie deleted: 6873d3b17dc19636df056887
+2025/07/13 18:42:08 | INFO | Categorie deleted: 6873d3b17dc19636df056887
+2025/07/13 18:44:06 | INFO | Created new categorie: kl;l (ID: 6873d4467dc19636df056890)
+2025/07/13 18:45:39 | INFO | Categorie deleted: 6873d4467dc19636df056890
+2025/07/13 18:45:46 | INFO | Categorie deleted: 6873d2797dc19636df056880
+2025/07/13 18:46:04 | INFO | Returned cached brand list
+2025/07/13 18:46:58 | INFO | Returned cached categorie list
+2025/07/13 18:47:02 | INFO | Created new subcategorie: dfs (ID: 6873d4f6100c94a0804930b7)
+2025/07/13 18:47:16 | INFO | Returned cached brand list
+2025/07/13 18:47:16 | INFO | Returned cached categorie list
+2025/07/13 18:48:03 | INFO | Returned cached categorie list
+2025/07/13 18:51:38 | INFO | Returned cached categorie list
+2025/07/13 18:51:46 | INFO | Returned cached categorie list
+2025/07/13 18:51:48 | INFO | Categorie restored: 6873d2797dc19636df056880
+2025/07/13 18:52:29 | INFO | Returned cached categorie list
+2025/07/13 18:52:31 | INFO | Categorie deleted: 6873d2797dc19636df056880
+2025/07/13 18:53:27 | INFO | Returned cached categorie list
+2025/07/13 18:58:51 | INFO | Returned cached categorie list
+2025/07/13 18:58:52 | INFO | Returned cached categorie list
+2025/07/13 19:03:11 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:03:20 | ERROR | Update Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:15 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:19 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:20 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:05:20 | ERROR | Get Brand Error: Cast to ObjectId failed for value "null" (type string) at path "_id" for model "brand"
+2025/07/13 19:10:37 | INFO | Brand restored: 6873d1eb7dc19636df05687a
+2025/07/13 19:12:31 | INFO | Returned cached brand list
+2025/07/13 19:12:35 | INFO | Returned cached brand list
+2025/07/13 19:13:48 | INFO | Returned cached brand list
+2025/07/13 19:13:58 | INFO | Brand updated: 686d07688ea0543e9b91f0be
+2025/07/13 19:14:53 | INFO | Brand updated: 686d07688ea0543e9b91f0be
+2025/07/13 19:16:02 | INFO | Brand updated: 686d07688ea0543e9b91f0be
+2025/07/13 19:16:11 | INFO | Brand updated: 6873d1eb7dc19636df05687a
+2025/07/13 19:24:00 | INFO | Categorie restored: 6873d2797dc19636df056880
+2025/07/13 19:26:08 | INFO | Returned cached categorie list
+2025/07/13 19:26:25 | INFO | Returned cached categorie list
+2025/07/13 19:26:28 | INFO | Returned cached categorie list
+2025/07/13 19:26:34 | INFO | Categorie updated: 6873d2797dc19636df056880
+2025/07/13 19:27:15 | INFO | Categorie updated: 6873d2797dc19636df056880
+2025/07/13 19:27:55 | INFO | Categorie updated: 6873d2797dc19636df056880
+2025/07/13 19:28:24 | INFO | Categorie updated: 6873d2797dc19636df056880
+2025/07/13 19:28:27 | INFO | Categorie restored: 6873d4467dc19636df056890
+2025/07/14 08:53:36 | INFO | Product deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/14 08:53:48 | INFO | Product restored: 6873bbe3bdf147e4db03f2f1
+2025/07/14 08:54:08 | INFO | Returned cached brand list
+2025/07/14 08:54:08 | INFO | Returned cached subcategorie list
+2025/07/14 08:55:12 | INFO | Returned cached categorie list
+2025/07/14 08:55:27 | INFO | Returned cached brand list
+2025/07/14 08:55:27 | INFO | Returned cached subcategorie list
+2025/07/14 08:55:27 | INFO | Returned cached categorie list
+2025/07/14 08:56:21 | INFO | Returned cached categorie list
+2025/07/14 12:13:58 | INFO | Product deleted: 6873bbe3bdf147e4db03f2f1
+2025/07/14 12:14:02 | INFO | Product deleted: 6873bc00bdf147e4db03f2f3
+2025/07/14 17:15:57 | INFO | Returned cached brand list
+2025/07/14 17:20:31 | INFO | Returned cached brand list
+2025/07/14 17:22:19 | INFO | Returned cached brand list
+2025/07/14 17:24:13 | INFO | Returned cached brand list
+2025/07/14 17:31:29 | INFO | Returned cached brand list
+2025/07/14 17:46:43 | INFO | Returned cached brand list
+2025/07/14 17:48:51 | INFO | Returned cached brand list
+2025/07/14 17:59:58 | INFO | Returned cached brand list
+2025/07/14 18:01:19 | INFO | Returned cached brand list
+2025/07/14 18:05:14 | ERROR | Get Product Error: Cast to ObjectId failed for value "cart" (type string) at path "_id" for model "Product"
+2025/07/14 18:08:32 | INFO | Returned cached brand list
+2025/07/14 18:08:54 | INFO | Returned cached brand list
+2025/07/14 18:09:07 | ERROR | Get Product Error: Cast to ObjectId failed for value "cart" (type string) at path "_id" for model "Product"
+2025/07/14 18:09:20 | INFO | Returned cached brand list
+2025/07/14 18:09:41 | INFO | Returned cached brand list
+2025/07/14 18:09:55 | INFO | Returned cached brand list
+2025/07/14 18:09:57 | INFO | Returned cached brand list
+2025/07/14 18:23:55 | INFO | Returned cached brand list
+2025/07/14 19:28:13 | INFO | Returned cached brand list
+2025/07/14 19:53:14 | INFO | Returned cached brand list
+2025/07/14 19:53:31 | INFO | Returned cached brand list
+2025/07/14 19:53:56 | INFO | Returned cached brand list
+2025/07/14 19:54:05 | INFO | Returned cached brand list
+2025/07/14 19:55:00 | INFO | Returned cached brand list
+2025/07/14 19:55:27 | INFO | Returned cached brand list
+2025/07/14 19:55:30 | INFO | Returned cached brand list
+2025/07/14 19:55:47 | INFO | Returned cached brand list
+2025/07/14 20:29:16 | INFO | Returned cached brand list
+2025/07/14 20:30:27 | INFO | Returned cached brand list
+2025/07/14 20:33:41 | INFO | Returned cached brand list
+2025/07/14 20:34:05 | INFO | Returned cached brand list
+2025/07/14 20:34:20 | INFO | Returned cached brand list
+2025/07/14 20:34:21 | INFO | Returned cached brand list
+2025/07/14 20:34:31 | INFO | Returned cached brand list
+2025/07/14 20:35:37 | INFO | Returned cached brand list
+2025/07/14 20:35:58 | INFO | Returned cached brand list
+2025/07/14 20:36:12 | INFO | Returned cached brand list
+2025/07/14 20:37:53 | INFO | Returned cached brand list
+2025/07/14 20:38:13 | INFO | Returned cached brand list
+2025/07/14 20:39:40 | INFO | Returned cached brand list
+2025/07/14 20:40:05 | INFO | Returned cached brand list
+2025/07/14 20:45:33 | INFO | Returned cached brand list
+2025/07/14 20:46:59 | INFO | Returned cached brand list
+2025/07/14 20:48:10 | INFO | Returned cached brand list
+2025/07/14 20:49:24 | INFO | Returned cached brand list
+2025/07/14 20:49:35 | INFO | Returned cached brand list
+2025/07/14 20:52:25 | INFO | Returned cached brand list
+2025/07/14 20:52:25 | INFO | Returned cached subcategorie list
+2025/07/14 20:52:25 | INFO | Returned cached categorie list
+2025/07/14 20:52:43 | INFO | Returned cached brand list
+2025/07/14 20:52:50 | INFO | Returned cached brand list
+2025/07/14 20:52:54 | INFO | Returned cached brand list
+2025/07/14 20:54:18 | INFO | Product restored: 6873bc00bdf147e4db03f2f3
+2025/07/14 20:54:21 | INFO | Product deleted: 6873bc00bdf147e4db03f2f3
+2025/07/14 20:54:29 | INFO | Product deleted: 687543e8b1bb70e47b3dcf32
+2025/07/14 20:54:32 | INFO | Returned cached brand list
+2025/07/14 20:54:43 | INFO | Returned cached brand list
+2025/07/14 21:01:49 | INFO | Returned cached brand list
+2025/07/14 21:01:49 | INFO | Returned cached subcategorie list
+2025/07/14 21:01:55 | INFO | Returned cached brand list
+2025/07/14 21:01:55 | INFO | Returned cached subcategorie list
+2025/07/14 21:01:59 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:02:15 | INFO | Returned cached brand list
+2025/07/14 21:02:15 | INFO | Returned cached subcategorie list
+2025/07/14 21:02:19 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:02:21 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:03:37 | INFO | Returned cached brand list
+2025/07/14 21:03:37 | INFO | Returned cached subcategorie list
+2025/07/14 21:03:42 | INFO | Returned cached brand list
+2025/07/14 21:03:42 | INFO | Returned cached subcategorie list
+2025/07/14 21:03:48 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:03:57 | INFO | Returned cached brand list
+2025/07/14 21:03:57 | INFO | Returned cached subcategorie list
+2025/07/14 21:04:00 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:04:44 | INFO | Returned cached brand list
+2025/07/14 21:04:44 | INFO | Returned cached subcategorie list
+2025/07/14 21:04:57 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:05:23 | INFO | Returned cached brand list
+2025/07/14 21:05:23 | INFO | Returned cached subcategorie list
+2025/07/14 21:05:29 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2025/07/14 21:08:29 | INFO | Product updated: 68750da6d63a826b5d675888
+2025/07/14 21:08:29 | INFO | Returned cached brand list
+2025/07/14 21:08:36 | INFO | Returned cached brand list
+2025/07/14 21:08:46 | INFO | Returned cached brand list
+2025/07/14 21:08:46 | INFO | Returned cached subcategorie list
+2025/07/14 21:08:55 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/14 21:08:55 | INFO | Returned cached brand list
+2025/07/14 21:09:18 | INFO | Returned cached brand list
+2025/07/14 21:09:18 | INFO | Returned cached subcategorie list
+2025/07/14 21:09:28 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/14 21:09:28 | INFO | Returned cached brand list
+2025/07/14 21:10:37 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/14 21:10:37 | INFO | Returned cached brand list
+2025/07/14 21:10:41 | INFO | Returned cached brand list
+2025/07/14 21:10:52 | INFO | Returned cached brand list
+2025/07/14 21:10:52 | INFO | Returned cached subcategorie list
+2025/07/14 21:11:02 | INFO | Returned cached brand list
+2025/07/14 21:11:02 | INFO | Returned cached subcategorie list
+2025/07/14 21:11:05 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/14 21:11:05 | INFO | Returned cached brand list
+2025/07/14 21:13:41 | INFO | Admin created new brand: gfdgfdgdgdfgfdgdfg (ID: 687548d5eb6d16b89cd9ee1d)
+2025/07/14 21:14:21 | INFO | Returned cached categorie list
+2025/07/14 21:15:31 | INFO | Returned cached categorie list
+2025/07/14 21:15:36 | INFO | Created new subcategorie: sdas (ID: 68754948eb6d16b89cd9ee20)
+2025/07/14 21:17:19 | INFO | Created new categorie: dsad (ID: 687549afeb6d16b89cd9ee23)
+2025/07/14 21:20:43 | INFO | Returned cached brand list
+2025/07/14 21:20:46 | INFO | Brand deleted: 686d07688ea0543e9b91f0be
+2025/07/14 21:20:51 | INFO | Brand restored: 686d07688ea0543e9b91f0be
+2025/07/14 21:22:13 | INFO | Returned cached categorie list
+2025/07/14 21:22:16 | INFO | Categorie deleted: 6873d2797dc19636df056880
+2025/07/14 21:22:20 | INFO | Categorie restored: 6873d2797dc19636df056880
+2025/07/14 21:22:41 | INFO | Returned cached brand list
+2025/07/14 21:22:41 | INFO | Returned cached subcategorie list
+2025/07/14 21:24:19 | INFO | Returned cached categorie list
+2025/07/14 21:24:24 | INFO | Returned cached categorie list
+2025/07/14 21:24:28 | INFO | Returned cached brand list
+2025/07/14 21:24:53 | INFO | Categorie updated: 6873d4467dc19636df056890
+2025/07/14 21:25:20 | INFO | Returned cached brand list
+2025/07/14 21:26:13 | INFO | Brand updated: 686d07688ea0543e9b91f0be
+2025/07/14 21:26:17 | INFO | Brand updated: 686d07688ea0543e9b91f0be
+2025/07/14 21:26:22 | INFO | Brand deleted: 686d07688ea0543e9b91f0be
+2025/07/14 21:26:24 | INFO | Brand restored: 686d07688ea0543e9b91f0be
+2025/07/14 21:28:55 | INFO | Returned cached brand list
+2025/07/14 21:43:45 | INFO | Returned cached brand list
+2025/07/14 21:43:51 | INFO | Product deleted: 6874ca77bf6fd8227ae263a8
+2025/07/14 21:43:58 | INFO | Product restored: 6874ca77bf6fd8227ae263a8
+2025/07/14 21:44:08 | INFO | Returned cached brand list
+2025/07/14 21:44:08 | INFO | Returned cached subcategorie list
+2025/07/14 21:44:22 | INFO | Returned cached categorie list
+2025/07/14 21:44:36 | INFO | Returned cached brand list
+2025/07/14 21:44:39 | INFO | Returned cached brand list
+2025/07/14 21:44:42 | INFO | Returned cached categorie list
+2025/07/14 21:44:47 | INFO | Returned cached categorie list
+2025/07/15 15:02:28 | INFO | Returned cached brand list
+2025/07/15 15:02:28 | INFO | Returned cached subcategorie list
+2025/07/15 15:02:28 | INFO | Returned cached categorie list
+2025/07/15 15:02:29 | INFO | Returned cached brand list
+2025/07/15 15:02:29 | INFO | Returned cached subcategorie list
+2025/07/15 15:02:29 | INFO | Returned cached categorie list
+2025/07/15 15:02:34 | INFO | Returned cached brand list
+2025/07/15 15:02:34 | INFO | Returned cached subcategorie list
+2025/07/15 15:02:34 | INFO | Returned cached categorie list
+2025/07/15 15:02:50 | INFO | Returned cached brand list
+2025/07/15 15:02:50 | INFO | Returned cached subcategorie list
+2025/07/15 15:02:50 | INFO | Returned cached categorie list
+2025/07/15 15:05:05 | INFO | Returned cached brand list
+2025/07/15 16:17:25 | INFO | Returned cached brand list
+2025/07/15 16:17:40 | INFO | Returned cached brand list
+2025/07/15 16:17:43 | INFO | Returned cached brand list
+2025/07/15 16:17:55 | INFO | Returned cached brand list
+2025/07/15 16:21:21 | INFO | Returned cached brand list
+2025/07/15 16:21:30 | INFO | Returned cached brand list
+2025/07/15 16:21:38 | INFO | Returned cached brand list
+2025/07/15 16:22:36 | INFO | Returned cached subcategorie list
+2025/07/15 16:22:36 | INFO | Returned cached categorie list
+2025/07/15 16:22:43 | INFO | Returned cached brand list
+2025/07/15 16:22:43 | INFO | Returned cached subcategorie list
+2025/07/15 16:22:43 | INFO | Returned cached categorie list
+2025/07/15 16:22:52 | INFO | Returned cached brand list
+2025/07/15 16:22:52 | INFO | Returned cached subcategorie list
+2025/07/15 16:22:52 | INFO | Returned cached categorie list
+2025/07/15 16:23:13 | INFO | Returned cached brand list
+2025/07/15 16:23:32 | INFO | Returned cached brand list
+2025/07/15 16:23:35 | INFO | Returned cached brand list
+2025/07/15 16:23:37 | INFO | Returned cached brand list
+2025/07/15 16:24:52 | INFO | Returned cached brand list
+2025/07/15 16:24:52 | INFO | Returned cached subcategorie list
+2025/07/15 16:24:52 | INFO | Returned cached categorie list
+2025/07/15 16:35:24 | INFO | Returned cached brand list
+2025/07/15 16:35:24 | INFO | Returned cached subcategorie list
+2025/07/15 16:35:24 | INFO | Returned cached categorie list
+2025/07/15 16:37:33 | INFO | Returned cached brand list
+2025/07/15 16:38:04 | INFO | Returned cached brand list
+2025/07/15 16:38:16 | INFO | Returned cached brand list
+2025/07/15 16:42:22 | INFO | Returned cached brand list
+2025/07/15 16:42:26 | INFO | Returned cached brand list
+2025/07/15 16:42:35 | INFO | Returned cached brand list
+2025/07/15 16:42:38 | INFO | Returned cached brand list
+2025/07/15 16:42:58 | INFO | Returned cached brand list
+2025/07/15 16:43:02 | INFO | Returned cached brand list
+2025/07/15 16:43:27 | INFO | Returned cached brand list
+2025/07/15 16:54:49 | INFO | Returned cached brand list
+2025/07/15 16:55:05 | INFO | Returned cached brand list
+2025/07/15 16:55:06 | INFO | Returned cached brand list
+2025/07/15 16:57:24 | INFO | Returned cached brand list
+2025/07/15 16:57:45 | INFO | Returned cached brand list
+2025/07/15 16:57:51 | INFO | Returned cached brand list
+2025/07/15 16:59:18 | INFO | Returned cached brand list
+2025/07/15 16:59:23 | INFO | Returned cached brand list
+2025/07/15 17:03:11 | INFO | Returned cached brand list
+2025/07/15 17:12:27 | INFO | Returned cached brand list
+2025/07/15 17:12:44 | INFO | Returned cached brand list
+2025/07/15 17:13:37 | INFO | Returned cached brand list
+2025/07/15 17:14:34 | INFO | Returned cached brand list
+2025/07/15 17:14:51 | INFO | Returned cached brand list
+2025/07/15 17:15:57 | INFO | Returned cached brand list
+2025/07/15 17:23:49 | INFO | Returned cached brand list
+2025/07/15 17:27:51 | INFO | Returned cached brand list
+2025/07/15 17:43:36 | INFO | Returned cached categorie list
+2025/07/15 17:43:40 | INFO | Categorie deleted: 6873d2797dc19636df056880
+2025/07/15 17:43:43 | INFO | Categorie restored: 6873d2797dc19636df056880
+2025/07/15 17:45:13 | INFO | Returned cached brand list
+2025/07/15 17:48:23 | INFO | Returned cached categorie list
+2025/07/15 17:48:25 | INFO | Returned cached brand list
+2025/07/15 17:48:26 | INFO | Returned cached categorie list
+2025/07/15 17:50:33 | INFO | Returned cached brand list
+2025/07/15 17:50:42 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/15 17:51:40 | INFO | Returned cached brand list
+2025/07/15 17:51:40 | INFO | Returned cached subcategorie list
+2025/07/15 17:51:57 | INFO | Returned cached brand list
+2025/07/15 17:51:57 | INFO | Returned cached subcategorie list
+2025/07/15 17:52:00 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/15 17:52:01 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/15 17:52:40 | INFO | Returned cached brand list
+2025/07/15 17:52:40 | INFO | Returned cached subcategorie list
+2025/07/15 17:52:42 | INFO | Returned cached brand list
+2025/07/15 17:52:42 | INFO | Returned cached subcategorie list
+2025/07/15 17:52:44 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/15 17:52:45 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/15 17:53:06 | INFO | Returned cached brand list
+2025/07/15 17:53:06 | INFO | Returned cached subcategorie list
+2025/07/15 17:53:10 | INFO | Returned cached brand list
+2025/07/15 17:53:10 | INFO | Returned cached subcategorie list
+2025/07/15 17:53:18 | INFO | Returned cached brand list
+2025/07/15 17:53:18 | INFO | Returned cached subcategorie list
+2025/07/15 17:53:21 | INFO | Product updated: 6874ca77bf6fd8227ae263a8
+2025/07/15 17:54:58 | INFO | Returned cached subcategorie list
+2025/07/15 17:55:41 | INFO | Returned cached brand list
+2025/07/15 17:55:44 | INFO | Returned cached brand list
+2025/07/15 17:55:58 | INFO | Brand updated: 6873b150a0b57e76eb9f7951
+2025/07/15 17:56:53 | INFO | Brand updated: 6873b150a0b57e76eb9f7951
+2025/07/15 17:57:16 | INFO | Returned cached brand list
+2025/07/15 17:57:20 | INFO | Categorie updated: 6873d2797dc19636df056880
+2025/07/15 17:58:08 | INFO | Categorie updated: 6873d2797dc19636df056880
+2025/07/15 17:58:18 | INFO | Returned cached categorie list
+2025/07/15 17:58:27 | INFO | Created new subcategorie: sdas (ID: 68766c933711a95174bd659a)
+2025/07/15 17:58:55 | INFO | Returned cached brand list
+2025/07/15 17:59:09 | INFO | Returned cached brand list
+2025/07/15 18:00:38 | INFO | Returned cached brand list
+2025/07/15 18:00:49 | INFO | Returned cached brand list
+2025/07/15 18:01:05 | INFO | Returned cached brand list
+2025/07/15 18:04:43 | INFO | Returned cached brand list
+2025/07/15 18:07:05 | INFO | Returned cached brand list
+2025/07/15 18:30:12 | INFO | Returned cached brand list
+2025/07/15 18:30:28 | INFO | Returned cached brand list
+2025/07/15 18:30:38 | INFO | Returned cached brand list
+2025/07/15 18:36:15 | INFO | Returned cached brand list
+2025/07/15 18:36:21 | INFO | Returned cached brand list
+2025/07/15 18:45:48 | INFO | Returned cached brand list
+2025/07/15 18:45:59 | INFO | Returned cached brand list
+2025/07/15 18:46:02 | INFO | Returned cached brand list
+2025/07/15 18:46:05 | INFO | Returned cached brand list
+2025/07/15 18:46:07 | INFO | Returned cached brand list
+2025/07/15 18:46:09 | INFO | Returned cached brand list
+2025/07/15 18:46:12 | INFO | Returned cached brand list
+2025/07/15 18:46:30 | INFO | Returned cached brand list
+2025/07/15 18:46:54 | INFO | Returned cached brand list
+2025/07/15 18:47:04 | INFO | Returned cached brand list
+2025/07/15 18:47:08 | INFO | Returned cached brand list
+2025/07/15 18:47:10 | INFO | Returned cached brand list
+2025/07/15 18:48:08 | INFO | Returned cached brand list
+2025/07/15 18:48:21 | INFO | Returned cached brand list
+2025/07/15 20:17:10 | INFO | Returned cached brand list
