@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const User = require('../model/user.model');
 const jwt = require('jsonwebtoken');
-const { sendOtpEmail } = require('../utils/email.util');
+const { sendOtpEmail, sendPasswordResetEmail } = require('../utils/email.util');
 const logger = require('../utils/logger.util');
 
 const signToken = (user)=>{
@@ -143,5 +143,77 @@ exports.resendOtp = async (req, res) => {
     } catch (error) {
         logger.error(`OTP resend error: ${error.message}`);
         return res.status(500).json({ message: 'An unexpected error occurred during OTP resending' });
+    }
+};
+
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+        if (!email) {
+            return res.status(400).json({ message: 'Email is required' });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            // Generic response for security to prevent email enumeration
+            return res.status(200).json({ message: 'If that email exists in our system, a password reset link has been sent.' });
+        }
+
+        // Generate the random token (unhashed) and save the hashed version to DB
+        const resetToken = user.createPasswordResetToken();
+        await user.save({ validateBeforeSave: false }); // Skip validation for password 
+
+        // Create reset URL
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const resetUrl = `${frontendUrl}/reset-password/${resetToken}`;
+
+        try {
+            await sendPasswordResetEmail(user.email, resetUrl);
+            return res.status(200).json({ message: 'If that email exists in our system, a password reset link has been sent.' });
+        } catch (mailError) {
+            user.passwordResetToken = undefined;
+            user.passwordResetExpires = undefined;
+            await user.save({ validateBeforeSave: false });
+            logger.error(`Error sending email in forgotPassword: ${mailError.message}`);
+            return res.status(500).json({ message: 'There was an error sending the email. Try again later.' });
+        }
+    } catch (error) {
+        logger.error(`Forgot password error: ${error.message}`);
+        return res.status(500).json({ message: 'An unexpected error occurred.' });
+    }
+};
+
+exports.resetPassword = async (req, res) => {
+    try {
+        const { token } = req.params;
+        const { password } = req.body;
+
+        if (!password) {
+            return res.status(400).json({ message: 'New password is required.' });
+        }
+
+        // 1. Get user based on the hashed token
+        const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
+
+        const user = await User.findOne({
+            passwordResetToken: hashedToken,
+            passwordResetExpires: { $gt: Date.now() }
+        });
+
+        // 2. If token has not expired, and there is user, set the new password
+        if (!user) {
+            return res.status(400).json({ message: 'Token is invalid or has expired.' });
+        }
+
+        user.password = password;
+        user.passwordResetToken = undefined;
+        user.passwordResetExpires = undefined;
+        await user.save();
+
+        return res.status(200).json({ message: 'Password has been reset successfully. Please log in with your new password.' });
+
+    } catch (error) {
+        logger.error(`Reset password error: ${error.message}`);
+        return res.status(500).json({ message: 'An unexpected error occurred.' });
     }
 };
