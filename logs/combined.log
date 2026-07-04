@@ -701,3 +701,40 @@ Use mongoose.model(name, schema)
 2025/07/15 18:48:08 | INFO | Returned cached brand list
 2025/07/15 18:48:21 | INFO | Returned cached brand list
 2025/07/15 20:17:10 | INFO | Returned cached brand list
+2026/07/04 19:15:53 | WARN | SMTP is not fully configured. Falling back to logging OTP for: otp-test-user@example.com
+2026/07/04 19:15:53 | INFO | [DEVELOPMENT OTP BYPASS] Verification code for otp-test-user@example.com is: 123456
+2026/07/04 19:15:53 | WARN | SMTP is not fully configured. Falling back to logging OTP for: otp-test-user@example.com
+2026/07/04 19:15:53 | INFO | [DEVELOPMENT OTP BYPASS] Verification code for otp-test-user@example.com is: 654321
+2026/07/04 19:15:53 | WARN | SMTP is not fully configured. Falling back to logging OTP for: otp-test-user@example.com
+2026/07/04 19:15:53 | INFO | [DEVELOPMENT OTP BYPASS] Verification code for otp-test-user@example.com is: 777777
+2026/07/04 19:24:25 | ERROR | Failed to send OTP email to a7medmessi100@gmail.com Invalid login: 535 5.7.0 Invalid credentials
+Error: Invalid login: 535 5.7.0 Invalid credentials
+    at SMTPConnection._formatError (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:938:19)
+    at SMTPConnection._actionAUTHComplete (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1784:34)
+    at SMTPConnection.<anonymous> (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:669:26)
+    at SMTPConnection._processResponse (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1150:20)
+    at SMTPConnection._onData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:898:14)
+    at SMTPConnection._onSocketData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:224:44)
+    at TLSSocket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+2026/07/04 19:24:25 | INFO | [FALLBACK LOG due to error] OTP for a7medmessi100@gmail.com is: 172775
+2026/07/04 19:24:25 | ERROR | Error sending email in login: Invalid login: 535 5.7.0 Invalid credentials
+2026/07/04 19:30:34 | ERROR | Failed to send OTP email to a7medmessi100@gmail.com Invalid login: 535 5.7.0 Invalid credentials
+Error: Invalid login: 535 5.7.0 Invalid credentials
+    at SMTPConnection._formatError (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:938:19)
+    at SMTPConnection._actionAUTHComplete (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1784:34)
+    at SMTPConnection.<anonymous> (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:669:26)
+    at SMTPConnection._processResponse (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1150:20)
+    at SMTPConnection._onData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:898:14)
+    at SMTPConnection._onSocketData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:224:44)
+    at TLSSocket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+2026/07/04 19:30:34 | INFO | [FALLBACK LOG due to error] OTP for a7medmessi100@gmail.com is: 271403
+2026/07/04 19:30:34 | ERROR | Error sending email in signup: Invalid login: 535 5.7.0 Invalid credentials
+2026/07/04 19:37:53 | INFO | OTP email successfully sent to ahmedshila102@gmail.com. Message ID: <b90e95b7-32cf-b94a-5494-ff455cb2d2ef@gmail.com>
+2026/07/04 19:38:41 | INFO | OTP email successfully sent to ahmedshika102@gmail.com. Message ID: <f459fb8c-4066-46a9-fc72-c8b5bb544833@gmail.com>
+2026/07/04 19:42:08 | INFO | OTP email successfully sent to ahmedshika102@gmail.com. Message ID: <1f0d4329-2067-8cb6-9cf7-a5c8bc6b6858@gmail.com>

@@ -1,4 +1,8 @@
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const User = require('../model/user.model');
+const { sendOtpEmail } = require('../utils/email.util');
+const logger = require('../utils/logger.util');
 
 exports.createUser = (role) => {
   return async (req, res) => {
@@ -14,8 +18,39 @@ exports.createUser = (role) => {
         return res.status(400).json({ message: 'Email already exists' });
       }
 
-      const user = await User.create({ name, email, password, role });
-      res.status(201).json({ message: 'User created', user });
+      // Generate 6-digit secure OTP
+      const otp = crypto.randomInt(100000, 1000000).toString();
+      const otpHash = await bcrypt.hash(otp, 10);
+
+      const user = await User.create({ 
+        name, 
+        email, 
+        password, 
+        role,
+        otpHash,
+        otpExpiresAt: new Date(Date.now() + 5 * 60 * 1000), // 5 minutes
+        otpAttempts: 0,
+        otpResentAt: new Date(),
+        isVerified: false
+      });
+
+      // Send Email
+      try {
+          await sendOtpEmail(user.email, otp);
+      } catch (mailError) {
+          logger.error(`Error sending email in signup: ${mailError.message}`);
+      }
+
+      res.status(201).json({ 
+          message: 'User created. OTP sent to email. Please verify.', 
+          user: { 
+              id: user._id, 
+              name: user.name, 
+              email: user.email, 
+              role: user.role,
+              isVerified: user.isVerified
+          } 
+      });
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Server error' });

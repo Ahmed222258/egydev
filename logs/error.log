@@ -171,3 +171,29 @@ Use mongoose.model(name, schema)
 2025/07/14 21:04:00 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
 2025/07/14 21:04:57 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
 2025/07/14 21:05:29 | ERROR | Update Product Error: Cannot destructure property 'brand' of 'req.body' as it is undefined.
+2026/07/04 19:24:25 | ERROR | Failed to send OTP email to a7medmessi100@gmail.com Invalid login: 535 5.7.0 Invalid credentials
+Error: Invalid login: 535 5.7.0 Invalid credentials
+    at SMTPConnection._formatError (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:938:19)
+    at SMTPConnection._actionAUTHComplete (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1784:34)
+    at SMTPConnection.<anonymous> (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:669:26)
+    at SMTPConnection._processResponse (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1150:20)
+    at SMTPConnection._onData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:898:14)
+    at SMTPConnection._onSocketData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:224:44)
+    at TLSSocket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+2026/07/04 19:24:25 | ERROR | Error sending email in login: Invalid login: 535 5.7.0 Invalid credentials
+2026/07/04 19:30:34 | ERROR | Failed to send OTP email to a7medmessi100@gmail.com Invalid login: 535 5.7.0 Invalid credentials
+Error: Invalid login: 535 5.7.0 Invalid credentials
+    at SMTPConnection._formatError (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:938:19)
+    at SMTPConnection._actionAUTHComplete (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1784:34)
+    at SMTPConnection.<anonymous> (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:669:26)
+    at SMTPConnection._processResponse (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1150:20)
+    at SMTPConnection._onData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:898:14)
+    at SMTPConnection._onSocketData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:224:44)
+    at TLSSocket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+2026/07/04 19:30:34 | ERROR | Error sending email in signup: Invalid login: 535 5.7.0 Invalid credentials

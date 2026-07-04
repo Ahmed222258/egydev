@@ -47,6 +47,27 @@ const userSchema = new mongoose.Schema(
         ref: 'Product',
       },
     ],
+    // OTP fields
+    otpHash: {
+      type: String,
+      default: null,
+    },
+    otpExpiresAt: {
+      type: Date,
+      default: null,
+    },
+    otpAttempts: {
+      type: Number,
+      default: 0,
+    },
+    otpResentAt: {
+      type: Date,
+      default: null,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
