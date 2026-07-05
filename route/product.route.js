@@ -4,6 +4,7 @@ const productController = require('../controller/product.controller');
 const { upload } = require('../middleware/upload.middleware');
 const { authenticate } = require('../middleware/auth.middleware');
 const { authorize } = require('../middleware/role.middleware');
+const { validateProduct } = require('../middleware/validate.middleware');
 
 // ── Public routes ─────────────────────────────────────────────────────────────
 router.get('/', productController.getAllProducts);
@@ -16,6 +17,7 @@ router.post(
   authenticate,
   authorize('admin', 'manager'),
   upload.array('images', 10),
+  validateProduct(true),
   productController.createProduct
 );
 
@@ -24,6 +26,7 @@ router.put(
   authenticate,
   authorize('admin', 'manager'),
   upload.array('images', 10),
+  validateProduct(false),
   productController.updateProduct
 );
 

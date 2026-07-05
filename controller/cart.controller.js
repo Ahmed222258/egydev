@@ -1,6 +1,6 @@
 const Cart = require('../model/cart.model');
 const Product = require('../model/product.model');
-
+const logger = require('../utils/logger.util');
 
 exports.getCart = async (req, res) => {
   try {
@@ -8,6 +8,7 @@ exports.getCart = async (req, res) => {
     if (!cart) return res.status(404).json({ message: 'Cart not found' });
     res.status(200).json(cart);
   } catch (error) {
+    logger.error(`getCart error: ${error.message}`);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
@@ -36,10 +37,10 @@ exports.addToCart = async (req, res) => {
     const updatedCart = await cart.save();
     res.status(200).json({ message: 'Item added to cart', cart: updatedCart });
   } catch (error) {
+    logger.error(`addToCart error: ${error.message}`);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
 
 exports.removeFromCart = async (req, res) => {
   const { productId } = req.params;
@@ -51,10 +52,10 @@ exports.removeFromCart = async (req, res) => {
     await cart.save();
     res.status(200).json({ message: 'Item removed', cart });
   } catch (error) {
+    logger.error(`removeFromCart error: ${error.message}`);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
 
 exports.updateQuantity = async (req, res) => {
   const { productId } = req.params;
@@ -75,10 +76,10 @@ exports.updateQuantity = async (req, res) => {
     const updatedCart = await cart.save();
     res.status(200).json({ message: 'Quantity updated', cart: updatedCart });
   } catch (error) {
+    logger.error(`updateQuantity error: ${error.message}`);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
 
 exports.clearCart = async (req, res) => {
   try {
@@ -89,10 +90,10 @@ exports.clearCart = async (req, res) => {
     await cart.save();
     res.status(200).json({ message: 'Cart cleared' });
   } catch (error) {
+    logger.error(`clearCart error: ${error.message}`);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
 
 exports.syncCartFromLocal = async (req, res) => {
   const localItems = req.body.items;
@@ -122,6 +123,7 @@ exports.syncCartFromLocal = async (req, res) => {
     const updatedCart = await cart.save();
     res.status(200).json({ message: 'Cart synced from localStorage', cart: updatedCart });
   } catch (error) {
+    logger.error(`syncCartFromLocal error: ${error.message}`);
     res.status(500).json({ message: 'Sync failed', error: error.message });
   }
 };

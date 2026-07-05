@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const brandController = require('../controller/brand.controller');
+const { authenticate } = require('../middleware/auth.middleware');
+const { authorize } = require('../middleware/role.middleware');
 
-router.post('/', brandController.createBrand);
-
+// Public — reads
 router.get('/', brandController.getAllBrands);
-
 router.get('/:id', brandController.getBrandById);
 
-router.put('/:id', brandController.updateBrand);
-
-router.delete('/:id', brandController.deleteBrand);
+// Protected — admin/manager only for writes (Fix #3)
+router.post('/', authenticate, authorize('admin', 'manager'), brandController.createBrand);
+router.put('/:id', authenticate, authorize('admin', 'manager'), brandController.updateBrand);
+router.delete('/:id', authenticate, authorize('admin', 'manager'), brandController.deleteBrand);
 
 module.exports = router;

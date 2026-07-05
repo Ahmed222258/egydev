@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const mongoose = require('mongoose');
-mongoose.set('strictPopulate', false);
 
 // Security & performance middleware
 const cors = require('cors');
@@ -12,6 +11,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
 const path = require('path');
 
 // Route imports
@@ -19,15 +19,16 @@ const authRoutes = require('./route/auth.route');
 const userRoutes = require('./route/user.route');
 const productRoutes = require('./route/product.route');
 const categorieRoutes = require('./route/categorie.route');
-const subcategorieRoutes = require('./route/subcategorie.routs');
+const subcategorieRoutes = require('./route/subcategory.routes'); // FIX #16: corrected name
 const brandRoutes = require('./route/brand.route');
 const cartRoutes = require('./route/cart.route');
 const orderRoutes = require('./route/order.route');
-const testimonialRoutes = require('./route/testmonila.route');
+const testimonialRoutes = require('./route/testimonial.routes'); // FIX #16: corrected name
 const teamRoutes = require('./route/team.route');
 const reviewRoutes = require('./route/review.route');
 const dashboardRoutes = require('./route/dashboard.route');
 const wishlistRoutes = require('./route/wishlist.route');
+const paymentRoutes = require('./route/payment.route');
 
 const app = express();
 
@@ -44,28 +45,12 @@ app.use(helmet());
 // Compress all responses
 app.use(compression());
 
-// Parse JSON and URL-encoded requests
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// FIX #13: Limit json requests size to 1mb to prevent memory exhaustion
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
-// Sanitize inputs to prevent MongoDB query injection (mutates objects in-place to avoid Express 5 read-only req.query setter issues)
-app.use((req, res, next) => {
-  const sanitize = (obj) => {
-    if (obj && typeof obj === 'object') {
-      for (const key in obj) {
-        if (key.startsWith('$') || key.includes('.')) {
-          delete obj[key];
-        } else {
-          sanitize(obj[key]);
-        }
-      }
-    }
-  };
-  sanitize(req.body);
-  sanitize(req.query);
-  sanitize(req.params);
-  next();
-});
+// FIX #19: Use express-mongo-sanitize to prevent MongoDB operator injection
+app.use(mongoSanitize());
 
 // Logger for requests
 app.use(morgan('combined'));
@@ -83,7 +68,10 @@ const authLimiter = rateLimit({
   max: parseInt(process.env.RATE_LIMIT_MAX) || 100, // Max requests
   message: { message: 'Too many requests from this IP, please try again later.' }
 });
+
+// Apply rate limiter to auth routes and registration POST /api/user (Fix #11)
 app.use('/api/auth', authLimiter);
+app.post('/api/user', authLimiter);
 
 // Serve static images folder
 app.use('/img', express.static(path.join(__dirname, './uploads')));
@@ -102,6 +90,12 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api', testimonialRoutes);
+app.use('/api/payment', paymentRoutes);
+
+// FIX #12: 404 catch-all route for unrecognized paths
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 
 // ── ERROR HANDLING MIDDLEWARE ────────────────────────────────────────────────
 app.use((err, req, res, next) => {

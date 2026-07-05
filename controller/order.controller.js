@@ -5,7 +5,7 @@ const logger = require('../utils/logger.util');
 // ── Create Order ──────────────────────────────────────────────────────────────
 exports.createOrder = async (req, res) => {
   try {
-    const { items, totalAmount, shippingAddress } = req.body;
+    const { items, shippingAddress } = req.body;
     const userId = req.user?.id;
 
     if (!userId) {
@@ -16,84 +16,130 @@ exports.createOrder = async (req, res) => {
       return res.status(400).json({ message: 'Order must contain at least one item' });
     }
 
-    // Validate stock and prepare updates
-    const stockUpdates = [];
+    // FIX #5 + #7: Server-side price lookup + atomic stock decrement
+    // We use findOneAndUpdate with $inc and a conditional filter to atomically
+    // check stock >= quantity and decrement in one operation, preventing oversell.
+    let calculatedTotal = 0;
+    const processedItems = [];
 
     for (const item of items) {
-      const product = await Product.findById(item.product);
-      if (!product || product.isDeleted) {
+      if (!item.product || !item.quantity || item.quantity < 1) {
+        return res.status(400).json({ message: 'Each item must have a product and quantity >= 1' });
+      }
+
+      // Determine variant filter for atomic update
+      const hasVariant = item.variant && (item.variant.size || item.variant.color);
+
+      // Fetch the product to get the real price (Fix #5)
+      const product = await Product.findOne({
+        _id: item.product,
+        isDeleted: { $ne: true },
+      });
+
+      if (!product) {
         return res.status(404).json({ message: `Product not found: ${item.product}` });
       }
 
-      // Check variant stock if a variant was selected
-      if (item.variant && (item.variant.size || item.variant.color)) {
-        const variant = product.variants.find(
-          (v) =>
-            (!item.variant.size || v.size === item.variant.size) &&
-            (!item.variant.color || v.color.toLowerCase() === item.variant.color.toLowerCase())
+      // Use server-side price, never trust client price
+      const unitPrice = product.price;
+      calculatedTotal += unitPrice * item.quantity;
+
+      if (hasVariant) {
+        // FIX #7 – Atomic variant stock decrement
+        const variantFilter = {
+          _id: item.product,
+          variants: {
+            $elemMatch: {
+              ...(item.variant.size  ? { size:  item.variant.size  } : {}),
+              ...(item.variant.color ? { color: item.variant.color } : {}),
+              stock: { $gte: item.quantity },
+            },
+          },
+        };
+
+        const variantUpdate = await Product.findOneAndUpdate(
+          variantFilter,
+          {
+            $inc: {
+              'inventory.currentStock': -item.quantity,
+              'inventory.soldQuantity':  item.quantity,
+              'analytics.purchases':     item.quantity,
+              'variants.$.stock':        -item.quantity,
+            },
+          },
+          { new: true }
         );
 
-        if (variant) {
-          if (variant.stock < item.quantity) {
-            return res.status(400).json({
-              message: `Insufficient variant stock for ${product.productName} (${item.variant.size || ''} ${item.variant.color || ''})`,
-            });
-          }
-          stockUpdates.push({ type: 'variant', product, variant, quantity: item.quantity });
-        } else {
-          // Fallback to main inventory
-          if (product.inventory.currentStock < item.quantity) {
-            return res.status(400).json({ message: `Insufficient stock for ${product.productName}` });
-          }
-          stockUpdates.push({ type: 'main', product, quantity: item.quantity });
+        if (!variantUpdate) {
+          return res.status(400).json({
+            message: `Insufficient variant stock for ${product.productName} (${item.variant.size || ''} ${item.variant.color || ''})`.trim(),
+          });
+        }
+
+        // Auto set Sold Out
+        if (variantUpdate.inventory.currentStock === 0) {
+          variantUpdate.status = 'Sold Out';
+          await variantUpdate.save();
+        }
+
+        // Low stock alert
+        if (
+          variantUpdate.inventory.currentStock > 0 &&
+          variantUpdate.inventory.currentStock <= variantUpdate.inventory.minStockAlert
+        ) {
+          logger.warn(
+            `LOW STOCK ALERT: "${variantUpdate.productName}" — ${variantUpdate.inventory.currentStock} remaining`
+          );
         }
       } else {
-        if (product.inventory.currentStock < item.quantity) {
+        // FIX #7 – Atomic main stock decrement
+        const mainUpdate = await Product.findOneAndUpdate(
+          {
+            _id: item.product,
+            isDeleted: { $ne: true },
+            'inventory.currentStock': { $gte: item.quantity },
+          },
+          {
+            $inc: {
+              'inventory.currentStock': -item.quantity,
+              'inventory.soldQuantity':  item.quantity,
+              'analytics.purchases':     item.quantity,
+            },
+          },
+          { new: true }
+        );
+
+        if (!mainUpdate) {
           return res.status(400).json({ message: `Insufficient stock for ${product.productName}` });
         }
-        stockUpdates.push({ type: 'main', product, quantity: item.quantity });
-      }
-    }
 
-    // Apply stock updates
-    for (const update of stockUpdates) {
-      const { product, quantity } = update;
+        if (mainUpdate.inventory.currentStock === 0) {
+          mainUpdate.status = 'Sold Out';
+          await mainUpdate.save();
+        }
 
-      if (update.type === 'variant') {
-        const variantIndex = product.variants.findIndex(
-          (v) => v._id.toString() === update.variant._id.toString()
-        );
-        if (variantIndex > -1) {
-          product.variants[variantIndex].stock -= quantity;
+        if (
+          mainUpdate.inventory.currentStock > 0 &&
+          mainUpdate.inventory.currentStock <= mainUpdate.inventory.minStockAlert
+        ) {
+          logger.warn(
+            `LOW STOCK ALERT: "${mainUpdate.productName}" — ${mainUpdate.inventory.currentStock} remaining`
+          );
         }
       }
 
-      product.inventory.currentStock = Math.max(0, product.inventory.currentStock - quantity);
-      product.inventory.soldQuantity += quantity;
-      product.analytics.purchases += quantity;
-
-      // Auto set Sold Out
-      if (product.inventory.currentStock === 0) {
-        product.status = 'Sold Out';
-      }
-
-      await product.save();
-
-      // Low stock alert
-      if (
-        product.inventory.currentStock > 0 &&
-        product.inventory.currentStock <= product.inventory.minStockAlert
-      ) {
-        logger.warn(
-          `LOW STOCK ALERT: "${product.productName}" (ID: ${product._id}) — only ${product.inventory.currentStock} remaining (alert threshold: ${product.inventory.minStockAlert})`
-        );
-      }
+      processedItems.push({
+        product: item.product,
+        quantity: item.quantity,
+        price: unitPrice, // server-side price (Fix #5)
+        variant: item.variant || {},
+      });
     }
 
     const newOrder = new Order({
       user: userId,
-      items,
-      totalAmount,
+      items: processedItems,
+      totalAmount: calculatedTotal, // server-calculated total (Fix #5)
       shippingAddress,
     });
 
@@ -109,12 +155,12 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// ── Get All Orders (admin) ────────────────────────────────────────────────────
+// ── Get All Orders (admin only) ───────────────────────────────────────────────
 exports.getAllOrders = async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
+    const page  = parseInt(req.query.page)  || 1;
     const limit = parseInt(req.query.limit) || 20;
-    const skip = (page - 1) * limit;
+    const skip  = (page - 1) * limit;
     const { status } = req.query;
 
     const filter = status ? { status } : {};
@@ -146,9 +192,9 @@ exports.getAllOrders = async (req, res) => {
 exports.getUserOrders = async (req, res) => {
   try {
     const userId = req.user.id;
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
-    const skip = (page - 1) * limit;
+    const page   = parseInt(req.query.page)  || 1;
+    const limit  = parseInt(req.query.limit) || 10;
+    const skip   = (page - 1) * limit;
 
     const [orders, total] = await Promise.all([
       Order.find({ user: userId })
@@ -172,11 +218,11 @@ exports.getUserOrders = async (req, res) => {
   }
 };
 
-// ── Update Order Status ───────────────────────────────────────────────────────
+// ── Update Order Status (admin only) ─────────────────────────────────────────
 exports.updateOrderStatus = async (req, res) => {
   try {
     const { orderId } = req.params;
-    const { status } = req.body;
+    const { status }  = req.body;
 
     const validStatuses = ['pending', 'paid', 'shipped', 'delivered', 'cancelled'];
     if (!validStatuses.includes(status)) {
@@ -198,13 +244,12 @@ exports.updateOrderStatus = async (req, res) => {
       for (const item of updatedOrder.items) {
         await Product.findByIdAndUpdate(item.product, {
           $inc: {
-            'inventory.currentStock': item.quantity,
+            'inventory.currentStock':  item.quantity,
             'inventory.soldQuantity': -item.quantity,
-            'analytics.purchases': -item.quantity,
+            'analytics.purchases':    -item.quantity,
           },
         });
 
-        // Check if it was Sold Out and can now be Available again
         const prod = await Product.findById(item.product);
         if (prod && prod.status === 'Sold Out' && prod.inventory.currentStock > 0) {
           prod.status = 'Available';

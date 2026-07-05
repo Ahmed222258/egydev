@@ -52,7 +52,7 @@ exports.createUser = (role) => {
           } 
       });
     } catch (err) {
-      console.error(err);
+      logger.error(`createUser error: ${err.message}`);
       res.status(500).json({ message: 'Server error' });
     }
   };
@@ -60,10 +60,11 @@ exports.createUser = (role) => {
 
 exports.getUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    // FIX #8: exclude password hash from all user list responses
+    const users = await User.find().select('-password');
     res.status(200).json({ message: 'List of users', data: users });
   } catch (err) {
-    console.error(err);
+    logger.error(`getUsers error: ${err.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -76,7 +77,7 @@ exports.getProfile = async (req, res) => {
     }
     res.status(200).json({ data: user });
   } catch (err) {
-    console.error('Get profile error:', err);
+    logger.error(`getProfile error: ${err.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -102,7 +103,7 @@ exports.updateUser = async (req, res) => {
 
     res.status(200).json({ message: 'Profile updated', data: updatedUser });
   } catch (err) {
-    console.error(err);
+    logger.error(`updateUser error: ${err.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };

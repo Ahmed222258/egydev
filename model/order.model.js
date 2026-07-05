@@ -42,6 +42,16 @@ const orderSchema = new mongoose.Schema(
     shippingAddress: {
       address: String,
     },
+    // Paymob Intention API references
+    paymobIntentionId: {
+      type: String,
+      default: null,
+    },
+    // client_secret is used to build the Unified Checkout URL
+    paymobClientSecret: {
+      type: String,
+      default: null,
+    },
   },
   { timestamps: true }
 );

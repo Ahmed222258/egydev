@@ -197,3 +197,32 @@ Error: Invalid login: 535 5.7.0 Invalid credentials
     at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
     at Readable.push (node:internal/streams/readable:390:5)
 2026/07/04 19:30:34 | ERROR | Error sending email in signup: Invalid login: 535 5.7.0 Invalid credentials
+2026/07/05 21:06:49 | ERROR | Failed to send OTP email to aa7medvanbasten10.com No recipients defined
+Error: No recipients defined
+    at SMTPConnection._formatError (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:938:19)
+    at SMTPConnection._setEnvelope (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1204:34)
+    at SMTPConnection.send (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:744:14)
+    at sendMessage (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-transport\index.js:233:28)
+    at C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-transport\index.js:290:25
+    at SMTPConnection._actionAUTHComplete (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1798:9)
+    at SMTPConnection.<anonymous> (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:669:26)
+    at SMTPConnection._processResponse (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1150:20)
+    at SMTPConnection._onData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:898:14)
+    at SMTPConnection._onSocketData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:224:44)
+2026/07/05 21:06:49 | ERROR | Error sending email in signup: No recipients defined
+2026/07/05 21:07:07 | ERROR | Failed to send OTP email to a7medvanbasten10.com No recipients defined
+Error: No recipients defined
+    at SMTPConnection._formatError (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:938:19)
+    at SMTPConnection._setEnvelope (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1204:34)
+    at SMTPConnection.send (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:744:14)
+    at sendMessage (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-transport\index.js:233:28)
+    at C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-transport\index.js:290:25
+    at SMTPConnection._actionAUTHComplete (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1798:9)
+    at SMTPConnection.<anonymous> (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:669:26)
+    at SMTPConnection._processResponse (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:1150:20)
+    at SMTPConnection._onData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:898:14)
+    at SMTPConnection._onSocketData (C:\mti\Nadine Project\Ecommerce-Project\node_modules\nodemailer\lib\smtp-connection\index.js:224:44)
+2026/07/05 21:07:07 | ERROR | Error sending email in signup: No recipients defined
+2026/07/05 21:18:08 | ERROR | createPayment error: Request failed with status code 403
+2026/07/05 21:18:36 | ERROR | createPayment error: Paymob auth failed [403]: {"detail":"incorrect credentials"}
+2026/07/05 21:33:32 | ERROR | createPayment error: Cast to ObjectId failed for value "<6a4aa301cfc823373c6cc103>" (type string) at path "_id" for model "Order"

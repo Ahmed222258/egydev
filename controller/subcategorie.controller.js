@@ -9,7 +9,7 @@ exports.createSubcategorie = async (req, res) => {
 
     const { subcategorieName, categorieName } = req.body;
 
-    const foundCategorie = await Categorie.findOne({ categorieName });
+    const foundCategorie = await Categorie.findOne({ categorieName, isDeleted: { $ne: true }, deleted: { $ne: true } });
 
     if (!foundCategorie) {
       logger.warn(`Categorie not found with name: ${categorieName}`);
@@ -29,7 +29,6 @@ exports.createSubcategorie = async (req, res) => {
   }
 };
 
-
 exports.getAllSubcategories = async (req, res) => {
   const cacheKey = 'subcategories';
   const cachedData = cache.get(cacheKey);
@@ -40,7 +39,8 @@ exports.getAllSubcategories = async (req, res) => {
   }
 
   try {
-    const subcategories = await Subcategorie.find()
+    // Only return subcategories that are not soft-deleted
+    const subcategories = await Subcategorie.find({ isDeleted: { $ne: true }, deleted: { $ne: true } }).populate('categorie');
     cache.set(cacheKey, subcategories);
     res.status(200).json({ message: 'List of subcategories', data: subcategories });
   } catch (err) {
@@ -51,10 +51,15 @@ exports.getAllSubcategories = async (req, res) => {
 
 exports.getSubcategorieById = async (req, res) => {
   try {
-    const subcategorie = await Subcategorie.findById(req.params.id).populate('aubcategorie');
+    // FIX #14: Populate 'categorie' instead of the non-existent 'aubcategorie' field
+    const subcategorie = await Subcategorie.findOne({
+      _id: req.params.id,
+      isDeleted: { $ne: true },
+      deleted: { $ne: true }
+    }).populate('categorie');
 
     if (!subcategorie) {
-      logger.warn(`Subcategorie not found: ${req.params.id}`);
+      logger.warn(`Subcategorie not found or deleted: ${req.params.id}`);
       return res.status(404).json({ message: 'Subcategorie not found' });
     }
 
@@ -69,12 +74,15 @@ exports.updateSubcategorie = async (req, res) => {
   try {
     cache.del('subcategories');
 
-    const updated = await Subcategorie.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
-    });
+    // Only update if not soft-deleted
+    const updated = await Subcategorie.findOneAndUpdate(
+      { _id: req.params.id, isDeleted: { $ne: true }, deleted: { $ne: true } },
+      req.body,
+      { new: true }
+    );
 
     if (!updated) {
-      logger.warn(`Subcategorie not found: ${req.params.id}`);
+      logger.warn(`Subcategorie not found or deleted: ${req.params.id}`);
       return res.status(404).json({ message: 'Subcategorie not found' });
     }
 
@@ -90,15 +98,23 @@ exports.deleteSubcategorie = async (req, res) => {
   try {
     cache.del('subcategories');
 
-    const deleted = await Subcategorie.findByIdAndDelete(req.params.id);
+    // FIX #17: Inconsistent soft-delete. Toggle soft-delete like other controllers.
+    const subcategorie = await Subcategorie.findById(req.params.id);
 
-    if (!deleted) {
+    if (!subcategorie) {
       logger.warn(`Subcategorie not found: ${req.params.id}`);
       return res.status(404).json({ message: 'Subcategorie not found' });
     }
 
-    logger.info(`Subcategorie deleted: ${deleted._id}`);
-    res.status(200).json({ message: 'Subcategorie deleted', data: deleted });
+    subcategorie.deleted = !subcategorie.deleted;
+    subcategorie.isDeleted = subcategorie.deleted;
+    await subcategorie.save();
+
+    logger.info(`Subcategorie ${subcategorie.deleted ? 'deleted' : 'restored'}: ${subcategorie._id}`);
+    res.status(200).json({
+      message: `Subcategorie ${subcategorie.deleted ? 'marked as deleted' : 'restored'}`,
+      data: subcategorie
+    });
   } catch (err) {
     logger.error(`Delete Subcategorie Error: ${err.message}`);
     res.status(500).json({ message: 'Failed to delete subcategorie', error: err.message });
