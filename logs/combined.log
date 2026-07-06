@@ -788,3 +788,26 @@ Error: No recipients defined
 2026/07/05 21:33:59 | INFO | Payment intention created — order 6a4aa301cfc823373c6cc103, intention pi_test_147bb834770e442797be2d3aeb6d5bc3
 2026/07/05 21:36:37 | INFO | Initiating Paymob intention for order 6a4aa301cfc823373c6cc103
 2026/07/05 21:36:38 | INFO | Payment intention created — order 6a4aa301cfc823373c6cc103, intention pi_test_4f17c4a5dc7c450f91c05fba7500b352
+2026/07/06 21:10:36 | ERROR | HMAC mismatch
+2026/07/06 21:10:36 | INFO | Initiating Paymob intention for order order123
+2026/07/06 21:10:37 | ERROR | createPayment error: Paymob intention failed [401]: {"detail":"Authentication credentials were not provided."}
+2026/07/06 21:10:37 | INFO | Initiating Paymob intention for order order123
+2026/07/06 21:10:37 | ERROR | createPayment error: Paymob intention failed [401]: {"detail":"Authentication credentials were not provided."}
+2026/07/06 21:10:37 | ERROR | Webhook amount mismatch for order undefined: expected NaN, got 10000
+2026/07/06 21:10:37 | ERROR | Webhook amount mismatch for order undefined: expected NaN, got 5000
+2026/07/06 21:10:37 | ERROR | handleCallback error: Order.findById(...).select is not a function
+2026/07/06 21:11:55 | ERROR | HMAC mismatch
+2026/07/06 21:11:55 | INFO | Initiating Paymob intention for order order123
+2026/07/06 21:11:55 | INFO | Payment intention created — order order123, intention int_abc
+2026/07/06 21:11:55 | INFO | Payment SUCCESSFUL — order order123 marked paid
+2026/07/06 21:11:55 | ERROR | Webhook amount mismatch for order order123: expected 10000, got 5000
+2026/07/06 21:11:55 | INFO | Payment callback processed — success=true, redirecting client to http://localhost:3000/order/order123?status=success
+2026/07/06 21:15:46 | INFO | Initializing payment session cleanup worker (runs every 5 minutes)...
+2026/07/06 21:17:55 | INFO | Initializing payment session cleanup worker (runs every 5 minutes)...
+2026/07/06 21:18:36 | INFO | Initializing payment session cleanup worker (runs every 5 minutes)...
+2026/07/06 21:18:55 | INFO | Initializing payment session cleanup worker (runs every 5 minutes)...
+2026/07/06 21:23:55 | INFO | Payment Cleanup: Found 1 expired pending orders.
+2026/07/06 21:23:55 | INFO | Payment Cleanup: Cancelled order 6a4aa301cfc823373c6cc103 and restored stock.
+2026/07/06 21:25:30 | INFO | Order created: 6a4bf31acfda27c3cbbe4018 by user 6a4a9fd5ef8384c7a85fccb8
+2026/07/06 21:27:20 | INFO | Initiating Paymob intention for order 6a4bf31acfda27c3cbbe4018
+2026/07/06 21:27:21 | INFO | Payment intention created — order 6a4bf31acfda27c3cbbe4018, intention pi_test_ecd51e8d1c3d4cefa181dfb4871aee4d

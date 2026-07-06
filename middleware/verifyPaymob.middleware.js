@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const logger = require('../utils/logger.util');
 
 /**
  * Paymob HMAC Verification Middleware
@@ -55,12 +56,17 @@ exports.verifyPaymob = (req, res, next) => {
       .update(concatenated)
       .digest('hex');
 
-    if (computedHmac !== receivedHmac) {
+    const bufferA = Buffer.from(computedHmac, 'hex');
+    const bufferB = Buffer.from(receivedHmac, 'hex');
+
+    if (bufferA.length !== bufferB.length || !crypto.timingSafeEqual(bufferA, bufferB)) {
+      logger.error('HMAC mismatch', { received: receivedHmac, computed: computedHmac });
       return res.status(401).json({ message: 'Invalid HMAC signature — webhook rejected' });
     }
 
     next();
   } catch (err) {
-    return res.status(500).json({ message: 'HMAC verification error', error: err.message });
+    logger.error(`HMAC verification error: ${err.message}`);
+    return res.status(500).json({ message: 'HMAC verification error' });
   }
 };

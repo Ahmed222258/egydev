@@ -16,7 +16,9 @@ const axios = require('axios');
  *   PAYMOB_HMAC          = ...              (HMAC secret for webhook verification)
  */
 
-const SECRET_KEY = process.env.PAYMOB_SECRET_KEY || process.env.PAYMOB_API_KEY;
+const BASE_URL = process.env.PAYMOB_BASE_URL || 'https://accept.paymob.com';
+const origin = BASE_URL.replace(/\/api$/, '');
+const SECRET_KEY = process.env.PAYMOB_API_KEY;
 
 /**
  * Create a Paymob Payment Intention.
@@ -32,7 +34,7 @@ const SECRET_KEY = process.env.PAYMOB_SECRET_KEY || process.env.PAYMOB_API_KEY;
 const createIntention = async ({ orderId, amountCents, items = [], billing = {}, integrationId }) => {
   try {
     const response = await axios.post(
-      'https://accept.paymob.com/v1/intention/',
+      `${origin}/v1/intention/`,
       {
         amount: amountCents,
         currency: 'EGP',

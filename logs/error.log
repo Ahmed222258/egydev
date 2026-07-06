@@ -226,3 +226,11 @@ Error: No recipients defined
 2026/07/05 21:18:08 | ERROR | createPayment error: Request failed with status code 403
 2026/07/05 21:18:36 | ERROR | createPayment error: Paymob auth failed [403]: {"detail":"incorrect credentials"}
 2026/07/05 21:33:32 | ERROR | createPayment error: Cast to ObjectId failed for value "<6a4aa301cfc823373c6cc103>" (type string) at path "_id" for model "Order"
+2026/07/06 21:10:36 | ERROR | HMAC mismatch
+2026/07/06 21:10:37 | ERROR | createPayment error: Paymob intention failed [401]: {"detail":"Authentication credentials were not provided."}
+2026/07/06 21:10:37 | ERROR | createPayment error: Paymob intention failed [401]: {"detail":"Authentication credentials were not provided."}
+2026/07/06 21:10:37 | ERROR | Webhook amount mismatch for order undefined: expected NaN, got 10000
+2026/07/06 21:10:37 | ERROR | Webhook amount mismatch for order undefined: expected NaN, got 5000
+2026/07/06 21:10:37 | ERROR | handleCallback error: Order.findById(...).select is not a function
+2026/07/06 21:11:55 | ERROR | HMAC mismatch
+2026/07/06 21:11:55 | ERROR | Webhook amount mismatch for order order123: expected 10000, got 5000

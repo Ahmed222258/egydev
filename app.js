@@ -29,6 +29,7 @@ const reviewRoutes = require('./route/review.route');
 const dashboardRoutes = require('./route/dashboard.route');
 const wishlistRoutes = require('./route/wishlist.route');
 const paymentRoutes = require('./route/payment.route');
+const { startPaymentCleanupJob } = require('./utils/paymentCleanup.util');
 
 const app = express();
 
@@ -50,7 +51,13 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // FIX #19: Use express-mongo-sanitize to prevent MongoDB operator injection
-app.use(mongoSanitize());
+// Wrapper to fix Express 5 compatibility where req.query is read-only
+app.use((req, res, next) => {
+  if (req.body) mongoSanitize.sanitize(req.body);
+  if (req.query) mongoSanitize.sanitize(req.query);
+  if (req.params) mongoSanitize.sanitize(req.params);
+  next();
+});
 
 // Logger for requests
 app.use(morgan('combined'));
@@ -107,6 +114,9 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+  startPaymentCleanupJob();
+});
 
 module.exports = app;

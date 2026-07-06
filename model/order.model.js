@@ -52,6 +52,11 @@ const orderSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    payment: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payment',
+      default: null,
+    },
   },
   { timestamps: true }
 );

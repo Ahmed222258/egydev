@@ -242,13 +242,36 @@ exports.updateOrderStatus = async (req, res) => {
     // If cancelled, restore inventory
     if (status === 'cancelled') {
       for (const item of updatedOrder.items) {
-        await Product.findByIdAndUpdate(item.product, {
-          $inc: {
-            'inventory.currentStock':  item.quantity,
-            'inventory.soldQuantity': -item.quantity,
-            'analytics.purchases':    -item.quantity,
-          },
-        });
+        const hasVariant = item.variant && (item.variant.size || item.variant.color);
+        if (hasVariant) {
+          await Product.findOneAndUpdate(
+            {
+              _id: item.product,
+              variants: {
+                $elemMatch: {
+                  ...(item.variant.size ? { size: item.variant.size } : {}),
+                  ...(item.variant.color ? { color: item.variant.color } : {}),
+                }
+              }
+            },
+            {
+              $inc: {
+                'inventory.currentStock': item.quantity,
+                'inventory.soldQuantity': -item.quantity,
+                'analytics.purchases': -item.quantity,
+                'variants.$.stock': item.quantity
+              }
+            }
+          );
+        } else {
+          await Product.findByIdAndUpdate(item.product, {
+            $inc: {
+              'inventory.currentStock':  item.quantity,
+              'inventory.soldQuantity': -item.quantity,
+              'analytics.purchases':    -item.quantity,
+            },
+          });
+        }
 
         const prod = await Product.findById(item.product);
         if (prod && prod.status === 'Sold Out' && prod.inventory.currentStock > 0) {
