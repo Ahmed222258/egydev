@@ -29,6 +29,15 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       default: '',
+      validate: {
+        validator: function (v) {
+          // Allow empty string (optional field)
+          if (!v) return true;
+          // Egyptian phone: +201XXXXXXXXX, 201XXXXXXXXX, or 01XXXXXXXXX
+          return /^(\+?20)?1[0125][0-9]{8}$/.test(v);
+        },
+        message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)',
+      },
     },
     address: {
       type: String,

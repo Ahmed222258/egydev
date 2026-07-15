@@ -2,13 +2,15 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/user.model');
 
 exports.authenticate = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  let token = req.cookies.token;
+
+  if (!token && req.headers.authorization?.startsWith('Bearer ')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
 
   // FIX #1: Added `return` to stop execution after sending 401
-  if (!authHeader?.startsWith('Bearer '))
+  if (!token)
     return res.status(401).json({ message: 'No Token Provided' });
-
-  const token = authHeader.split(' ')[1];
   try {
     const decode = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decode.id).select('-password');

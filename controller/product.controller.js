@@ -441,3 +441,153 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).json({ message: 'Failed to toggle product delete state', error: err.message });
   }
 };
+
+// ── Add Images (append without replacing existing) ────────────────────────────
+// POST /:id/images  (multipart: field name "images", up to 10 files)
+exports.addImages = async (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ message: 'No image files uploaded' });
+    }
+
+    const product = await Product.findById(req.params.id);
+    if (!product || product.isDeleted) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    const newFilenames = req.files.map((f) => f.filename);
+    product.images.push(...newFilenames);
+    if (!product.imageUrl) product.imageUrl = newFilenames[0];
+
+    await product.save();
+    logger.info(`Images added to product ${product._id}: ${newFilenames.join(', ')}`);
+    res.status(200).json({
+      message: `${newFilenames.length} image(s) added`,
+      images: product.images,
+      imageUrl: product.imageUrl,
+    });
+  } catch (err) {
+    logger.error(`Add Images Error: ${err.message}`);
+    res.status(500).json({ message: 'Failed to add images', error: err.message });
+  }
+};
+
+// ── Remove a Single Image ─────────────────────────────────────────────────────
+// DELETE /:id/images/:filename
+exports.removeImage = async (req, res) => {
+  try {
+    const { filename } = req.params;
+
+    const product = await Product.findById(req.params.id);
+    if (!product || product.isDeleted) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    const before = product.images.length;
+    product.images = product.images.filter((img) => img !== filename);
+
+    if (product.images.length === before) {
+      return res.status(404).json({ message: 'Image not found on this product' });
+    }
+
+    // Keep imageUrl in sync — use the first remaining image
+    if (product.imageUrl === filename) {
+      product.imageUrl = product.images[0] || '';
+    }
+
+    await product.save();
+    logger.info(`Image removed from product ${product._id}: ${filename}`);
+    res.status(200).json({
+      message: 'Image removed',
+      images: product.images,
+      imageUrl: product.imageUrl,
+    });
+  } catch (err) {
+    logger.error(`Remove Image Error: ${err.message}`);
+    res.status(500).json({ message: 'Failed to remove image', error: err.message });
+  }
+};
+
+// ── Get Variants ──────────────────────────────────────────────────────────────
+// GET /:id/variants
+exports.getVariants = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id).select('variants productName');
+    if (!product || product.isDeleted) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Build colour/size summary maps for quick front-end use
+    const colours = [...new Set(product.variants.map((v) => v.color).filter(Boolean))];
+    const sizes = [...new Set(product.variants.map((v) => v.size).filter(Boolean))];
+
+    res.status(200).json({
+      message: 'Variants',
+      productName: product.productName,
+      variants: product.variants,
+      availableColors: colours,
+      availableSizes: sizes,
+    });
+  } catch (err) {
+    logger.error(`Get Variants Error: ${err.message}`);
+    res.status(500).json({ message: 'Failed to retrieve variants', error: err.message });
+  }
+};
+
+// ── Manage Variants (replace full variants array) ─────────────────────────────
+// PUT /:id/variants
+// Body: { variants: [ { size, color, stock, sku } ] }
+exports.manageVariants = async (req, res) => {
+  try {
+    let { variants } = req.body;
+
+    if (!variants) {
+      return res.status(400).json({ message: 'variants array is required' });
+    }
+
+    if (typeof variants === 'string') {
+      try { variants = JSON.parse(variants); } catch {
+        return res.status(400).json({ message: 'variants must be a valid JSON array' });
+      }
+    }
+
+    if (!Array.isArray(variants)) {
+      return res.status(400).json({ message: 'variants must be an array' });
+    }
+
+    const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'One Size'];
+    for (const v of variants) {
+      if (v.size && !validSizes.includes(v.size)) {
+        return res.status(400).json({ message: `Invalid size "${v.size}". Must be one of: ${validSizes.join(', ')}` });
+      }
+      if (v.stock !== undefined && (isNaN(v.stock) || v.stock < 0)) {
+        return res.status(400).json({ message: 'stock must be a non-negative number' });
+      }
+    }
+
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      { variants },
+      { new: true, runValidators: true }
+    );
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Derive summary
+    const colours = [...new Set(product.variants.map((v) => v.color).filter(Boolean))];
+    const sizes = [...new Set(product.variants.map((v) => v.size).filter(Boolean))];
+
+    logger.info(`Variants updated for product ${product._id}`);
+    res.status(200).json({
+      message: 'Variants updated',
+      variants: product.variants,
+      availableColors: colours,
+      availableSizes: sizes,
+    });
+  } catch (err) {
+    logger.error(`Manage Variants Error: ${err.message}`);
+    res.status(500).json({ message: 'Failed to update variants', error: err.message });
+  }
+};

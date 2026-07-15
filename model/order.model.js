@@ -39,8 +39,30 @@ const orderSchema = new mongoose.Schema(
       enum: ['pending', 'paid', 'shipped', 'delivered', 'cancelled'],
       default: 'pending',
     },
+    // Payment method chosen by the customer at checkout
+    paymentMethod: {
+      type: String,
+      // enum: ['visa', 'instapay', 'cash_on_delivery'], // visa disabled
+      enum: ['instapay', 'cash_on_delivery'],
+      required: true,
+      default: 'cash_on_delivery',
+    },
     shippingAddress: {
-      address: String,
+      address: { type: String, default: '' },
+      city: { type: String, default: '' },
+      country: { type: String, default: '' },
+    },
+    tax: {
+      type: Number,
+      default: 0,
+    },
+    shippingFee: {
+      type: Number,
+      default: 0,
+    },
+    codFee: {
+      type: Number,
+      default: 0,
     },
     // Paymob Intention API references
     paymobIntentionId: {

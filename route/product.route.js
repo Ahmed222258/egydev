@@ -10,6 +10,7 @@ const { validateProduct } = require('../middleware/validate.middleware');
 router.get('/', productController.getAllProducts);
 router.get('/related/:id', productController.getRelatedProducts);
 router.get('/:id', productController.getProductById);
+router.get('/:id/variants', productController.getVariants);
 
 // ── Protected routes (admin / manager) ───────────────────────────────────────
 router.post(
@@ -42,6 +43,33 @@ router.delete(
   authenticate,
   authorize('admin'),
   productController.deleteProduct
+);
+
+// ── Image management ──────────────────────────────────────────────────────────
+// Append images without replacing existing ones
+router.post(
+  '/:id/images',
+  authenticate,
+  authorize('admin', 'manager'),
+  upload.array('images', 10),
+  productController.addImages
+);
+
+// Remove a single image by filename
+router.delete(
+  '/:id/images/:filename',
+  authenticate,
+  authorize('admin', 'manager'),
+  productController.removeImage
+);
+
+// ── Variant management ────────────────────────────────────────────────────────
+// Replace the full variants array (size × color × stock)
+router.put(
+  '/:id/variants',
+  authenticate,
+  authorize('admin', 'manager'),
+  productController.manageVariants
 );
 
 // ── Authenticated: recently viewed ───────────────────────────────────────────

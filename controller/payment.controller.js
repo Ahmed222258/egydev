@@ -40,6 +40,13 @@ exports.createPayment = async (req, res) => {
       return res.status(400).json({ message: `Order is already ${order.status}` });
     }
 
+    // Only visa orders can use the Paymob checkout flow
+    if (order.paymentMethod !== 'visa') {
+      return res.status(400).json({
+        message: `This order uses payment method "${order.paymentMethod}". Only visa orders are processed via Paymob.`,
+      });
+    }
+
     // ── Idempotency Check (Issue 5) ──────────────────────────────────────────
     const existingPayment = await Payment.findOne({ order: orderId, status: 'pending' });
     if (existingPayment && order.paymobClientSecret && order.paymobIntentionId) {
@@ -227,27 +234,83 @@ exports.handleWebhook = async (req, res) => {
 
 // ── GET /api/payment/callback ─────────────────────────────────────────────────
 // Paymob redirects the browser here after the customer finishes on the checkout page.
+// We embed our_order_id in the redirection_url when creating the intention,
+// so this param is always present regardless of what Paymob appends.
 exports.handleCallback = async (req, res) => {
   try {
-    const { success, merchant_order_id, id: transactionId } = req.query;
+    // Log ALL query params so we can debug exactly what Paymob sends
+    logger.info(`Payment callback received — query params: ${JSON.stringify(req.query)}`);
+
+    const {
+      success,
+      our_order_id,         // Our MongoDB order _id — embedded in redirection_url at intention creation
+      merchant_order_id,    // Legacy fallback (not always sent by Paymob v2)
+      id: transactionId,
+      order: paymobOrderId, // Paymob's internal numeric order ID (for logging only)
+    } = req.query;
 
     const isSuccess = success === 'true';
 
-    const order = merchant_order_id
-      ? await Order.findById(merchant_order_id).select('_id status')
-      : null;
+    // ── Strategy 1: our_order_id — always present (embedded in redirection_url) ──
+    let order = null;
+    if (our_order_id) {
+      try { order = await Order.findById(our_order_id); } catch (_) {}
+      logger.info(`Callback strategy 1 (our_order_id=${our_order_id}) → ${order ? order._id : 'not found'}`);
+    }
+
+    // ── Strategy 2: merchant_order_id (legacy / older orders) ─────────────────
+    if (!order && merchant_order_id) {
+      try { order = await Order.findById(merchant_order_id); } catch (_) {}
+      logger.info(`Callback strategy 2 (merchant_order_id=${merchant_order_id}) → ${order ? order._id : 'not found'}`);
+    }
+
+    // ── Strategy 3: paymobIntentionId fallback ────────────────────────────────
+    if (!order && paymobOrderId) {
+      order = await Order.findOne({ paymobIntentionId: String(paymobOrderId) });
+      logger.info(`Callback strategy 3 (paymobOrderId=${paymobOrderId}) → ${order ? order._id : 'not found'}`);
+    }
+
+    if (order && isSuccess) {
+      // Local redirect callback fallback (webhooks can't reach localhost)
+      if (order.status === 'pending') {
+        order.status = 'paid';
+        await order.save();
+
+        const payment = await Payment.findOne({ order: order._id, status: 'pending' });
+        if (payment) {
+          payment.paymobTransactionId = String(transactionId || '');
+          payment.status = 'paid';
+          await payment.save();
+        } else {
+          const newPayment = await Payment.create({
+            order: order._id,
+            user: order.user,
+            paymobTransactionId: String(transactionId || ''),
+            amountCents: Math.round(order.totalAmount * 100),
+            status: 'paid',
+          });
+          order.payment = newPayment._id;
+          await order.save();
+        }
+        logger.info(`Payment callback marked order ${order._id} as paid (local redirect fallback)`);
+      } else {
+        logger.info(`Payment callback: order ${order._id} already has status=${order.status}, skipping update`);
+      }
+    } else if (!order) {
+      logger.warn(`Payment callback: could not find order — our_order_id=${our_order_id}, merchant_order_id=${merchant_order_id}, paymobOrderId=${paymobOrderId}`);
+    }
 
     const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
     const status = isSuccess ? 'success' : 'failure';
     const redirectUrl = order?._id
       ? `${frontendUrl}/order/${order._id}?status=${status}`
-      : `${frontendUrl}/checkout?status=${status}`;
+      : `${frontendUrl}/orders?status=${status}`;
 
     logger.info(`Payment callback processed — success=${isSuccess}, redirecting client to ${redirectUrl}`);
-    return res.redirect(redirectUrl); // Redirect instead of raw JSON (Issue 6)
+    return res.redirect(redirectUrl);
   } catch (err) {
     logger.error(`handleCallback error: ${err.message}`);
-    return res.status(500).json({ message: 'Callback error' }); // Sanitized (Issue 8)
+    return res.status(500).json({ message: 'Callback error' });
   }
 };
 
@@ -272,6 +335,7 @@ exports.getPaymentStatus = async (req, res) => {
 
     return res.status(200).json({
       orderStatus: order.status,
+      paymentMethod: order.paymentMethod,
       paymentStatus: payment ? payment.status : 'no_payment_initiated',
       paymobTransactionId: payment ? payment.paymobTransactionId : null,
     });

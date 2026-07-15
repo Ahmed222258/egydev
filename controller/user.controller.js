@@ -4,10 +4,18 @@ const User = require('../model/user.model');
 const { sendOtpEmail } = require('../utils/email.util');
 const logger = require('../utils/logger.util');
 
+// Egyptian phone: +201XXXXXXXXX, 201XXXXXXXXX, or 01XXXXXXXXX (prefixes 010, 011, 012, 015)
+const EGYPTIAN_PHONE_REGEX = /^(\+?20)?1[0125][0-9]{8}$/;
+
 exports.createUser = (role) => {
   return async (req, res) => {
     try {
-      const { name, email, password } = req.body;
+      const { name, email, password, phone } = req.body;
+
+      // Validate Egyptian phone number if provided
+      if (phone && !EGYPTIAN_PHONE_REGEX.test(phone)) {
+        return res.status(400).json({ message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)' });
+      }
 
       if (!['admin', 'user'].includes(role)) {
         return res.status(400).json({ message: 'Invalid role' });
@@ -26,6 +34,7 @@ exports.createUser = (role) => {
         name, 
         email, 
         password, 
+        phone,
         role,
         otpHash,
         otpExpiresAt: new Date(Date.now() + 5 * 60 * 1000), // 5 minutes
@@ -85,11 +94,17 @@ exports.getProfile = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const userId = req.user.id; 
-    const { name, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
+
+    // Validate Egyptian phone number if provided
+    if (phone && !EGYPTIAN_PHONE_REGEX.test(phone)) {
+      return res.status(400).json({ message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)' });
+    }
 
     const updateData = {};
     if (name) updateData.name = name;
     if (email) updateData.email = email;
+    if (phone !== undefined) updateData.phone = phone;
     if (password) updateData.password = await bcrypt.hash(password, 10);
 
     const updatedUser = await User.findByIdAndUpdate(userId, updateData, {

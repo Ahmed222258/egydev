@@ -68,6 +68,9 @@ const createIntention = async ({ orderId, amountCents, items = [], billing = {},
         },
         // extras is echoed back in the webhook under obj.order.extras
         extras: { order_id: orderId.toString() },
+        // We embed our own order ID in the URL so the callback always knows which order to update.
+        // Paymob appends its own params (&success=true&id=...&order=...) to whatever URL we give it.
+        redirection_url: `http://localhost:${process.env.PORT || 8000}/api/payment/callback?our_order_id=${orderId}`,
       },
       {
         headers: {
@@ -87,4 +90,37 @@ const createIntention = async ({ orderId, amountCents, items = [], billing = {},
   }
 };
 
-module.exports = { createIntention };
+/**
+ * Refund a Paymob transaction (full refund).
+ *
+ * @param {string} transactionId   - Paymob transaction ID (stored as paymobTransactionId on Payment)
+ * @param {number} amountCents     - Amount to refund in cents (use full payment amount for full refund)
+ * @returns {{ success: boolean, refundId: string }}
+ */
+const refundTransaction = async ({ transactionId, amountCents }) => {
+  try {
+    const response = await axios.post(
+      `${origin}/api/acceptance/void_refund/refund`,
+      {
+        transaction_id: parseInt(transactionId, 10),
+        amount_cents: amountCents,
+      },
+      {
+        headers: {
+          Authorization: `Token ${SECRET_KEY}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    return {
+      success: true,
+      refundId: String(response.data.id || ''),
+    };
+  } catch (err) {
+    const msg = err.response?.data ? JSON.stringify(err.response.data) : err.message;
+    throw new Error(`Paymob refund failed [${err.response?.status}]: ${msg}`);
+  }
+};
+
+module.exports = { createIntention, refundTransaction };

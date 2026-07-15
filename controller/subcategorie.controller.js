@@ -40,7 +40,7 @@ exports.getAllSubcategories = async (req, res) => {
 
   try {
     // Only return subcategories that are not soft-deleted
-    const subcategories = await Subcategorie.find({ isDeleted: { $ne: true }, deleted: { $ne: true } }).populate('categorie');
+    const subcategories = await Subcategorie.find({ isDeleted: { $ne: true }, deleted: { $ne: true } }).populate('categorie').lean();
     cache.set(cacheKey, subcategories);
     res.status(200).json({ message: 'List of subcategories', data: subcategories });
   } catch (err) {
