@@ -1,29 +1,29 @@
-const crypto = require('crypto');
-const bcrypt = require('bcrypt');
-const User = require('../model/user.model');
-const { sendOtpEmail } = require('../utils/email.util');
-const logger = require('../utils/logger.util');
+import crypto from 'crypto';
+import bcrypt from 'bcryptjs';
+import User from '../model/user.model.js';
+import { sendOtpEmail } from '../utils/email.util.js';
+import logger from '../utils/logger.util.js';
 
 // Egyptian phone: +201XXXXXXXXX, 201XXXXXXXXX, or 01XXXXXXXXX (prefixes 010, 011, 012, 015)
 const EGYPTIAN_PHONE_REGEX = /^(\+?20)?1[0125][0-9]{8}$/;
 
-exports.createUser = (role) => {
-  return async (req, res) => {
+export const createUser = (role) => {
+  return async (c) => {
     try {
-      const { name, email, password, phone } = req.body;
+      const { name, email, password, phone } = await c.req.json().catch(() => ({}));
 
       // Validate Egyptian phone number if provided
       if (phone && !EGYPTIAN_PHONE_REGEX.test(phone)) {
-        return res.status(400).json({ message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)' });
+        return c.json({ message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)' }, 400);
       }
 
       if (!['admin', 'user'].includes(role)) {
-        return res.status(400).json({ message: 'Invalid role' });
+        return c.json({ message: 'Invalid role' }, 400);
       }
 
       const existing = await User.findOne({ email });
       if (existing) {
-        return res.status(400).json({ message: 'Email already exists' });
+        return c.json({ message: 'Email already exists' }, 400);
       }
 
       // Generate 6-digit secure OTP
@@ -45,60 +45,62 @@ exports.createUser = (role) => {
 
       // Send Email
       try {
-          await sendOtpEmail(user.email, otp);
+        await sendOtpEmail(user.email, otp, c.env);
       } catch (mailError) {
-          logger.error(`Error sending email in signup: ${mailError.message}`);
+        logger.error(`Error sending email in signup: ${mailError.message}`);
       }
 
-      res.status(201).json({ 
-          message: 'User created. OTP sent to email. Please verify.', 
-          user: { 
-              id: user._id, 
-              name: user.name, 
-              email: user.email, 
-              role: user.role,
-              isVerified: user.isVerified
-          } 
-      });
+      return c.json({ 
+        message: 'User created. OTP sent to email. Please verify.', 
+        user: { 
+          id: user._id, 
+          name: user.name, 
+          email: user.email, 
+          role: user.role,
+          isVerified: user.isVerified
+        } 
+      }, 201);
     } catch (err) {
       logger.error(`createUser error: ${err.message}`);
-      res.status(500).json({ message: 'Server error' });
+      return c.json({ message: 'Server error' }, 500);
     }
   };
 };
 
-exports.getUsers = async (req, res) => {
+export const getUsers = async (c) => {
   try {
-    // FIX #8: exclude password hash from all user list responses
+    // Exclude password hash from all user list responses
     const users = await User.find().select('-password');
-    res.status(200).json({ message: 'List of users', data: users });
+    return c.json({ message: 'List of users', data: users }, 200);
   } catch (err) {
     logger.error(`getUsers error: ${err.message}`);
-    res.status(500).json({ message: 'Server error' });
+    return c.json({ message: 'Server error' }, 500);
   }
 };
 
-exports.getProfile = async (req, res) => {
+export const getProfile = async (c) => {
   try {
-    const user = await User.findById(req.user.id).select('-password'); // remove password from response
+    const userContext = c.get('user');
+    const user = await User.findById(userContext._id || userContext.id).select('-password'); // remove password from response
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return c.json({ message: 'User not found' }, 404);
     }
-    res.status(200).json({ data: user });
+    return c.json({ data: user }, 200);
   } catch (err) {
     logger.error(`getProfile error: ${err.message}`);
-    res.status(500).json({ message: 'Server error' });
+    return c.json({ message: 'Server error' }, 500);
   }
 };
 
-exports.updateUser = async (req, res) => {
+export const updateUser = async (c) => {
   try {
-    const userId = req.user.id; 
-    const { name, email, password, phone } = req.body;
+    const userContext = c.get('user');
+    const userId = userContext._id || userContext.id;
+    const { name, email, password, phone } = await c.req.json().catch(() => ({}));
 
     // Validate Egyptian phone number if provided
     if (phone && !EGYPTIAN_PHONE_REGEX.test(phone)) {
-      return res.status(400).json({ message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)' });
+      return c.json({ message: 'Please enter a valid Egyptian phone number (e.g. 01012345678 or +201012345678)' }, 400);
     }
 
     const updateData = {};
@@ -113,13 +115,12 @@ exports.updateUser = async (req, res) => {
     }).select('-password'); 
 
     if (!updatedUser) {
-      return res.status(404).json({ message: 'User not found' });
+      return c.json({ message: 'User not found' }, 404);
     }
 
-    res.status(200).json({ message: 'Profile updated', data: updatedUser });
+    return c.json({ message: 'Profile updated', data: updatedUser }, 200);
   } catch (err) {
     logger.error(`updateUser error: ${err.message}`);
-    res.status(500).json({ message: 'Server error' });
+    return c.json({ message: 'Server error' }, 500);
   }
 };
-

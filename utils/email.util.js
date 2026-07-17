@@ -1,25 +1,28 @@
-const nodemailer = require('nodemailer');
-const logger = require('./logger.util');
+import nodemailer from 'nodemailer';
+import logger from './logger.util.js';
 
-// Create a transporter using environment variables
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: parseInt(process.env.EMAIL_PORT) || 587,
-  secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+// Create a helper to get transporter
+const getTransporter = (env) => {
+  return nodemailer.createTransport({
+    host: env.EMAIL_HOST,
+    port: parseInt(env.EMAIL_PORT) || 587,
+    secure: env.EMAIL_SECURE === 'true', // true for 465, false for other ports
+    auth: {
+      user: env.EMAIL_USER,
+      pass: env.EMAIL_PASS,
+    },
+  });
+};
 
 /**
  * Send an OTP verification email to the user
  * @param {string} email 
  * @param {string} otp 
+ * @param {object} env
  */
-const sendOtpEmail = async (email, otp) => {
+export const sendOtpEmail = async (email, otp, env) => {
   const mailOptions = {
-    from: process.env.EMAIL_FROM || process.env.EMAIL_USER || '"Ecommerce Support" <no-reply@ecommerce.com>',
+    from: env.EMAIL_FROM || env.EMAIL_USER || '"Ecommerce Support" <no-reply@ecommerce.com>',
     to: email,
     subject: 'Your 2FA Verification Code - Expires in 5 Minutes',
     text: `Hello,\n\nWe received a login request for your account. Please use the following 6-digit One-Time Password (OTP) to complete your login. This code is valid for 5 minutes.\n\nVerification Code: ${otp}\n\nIf you did not initiate this request, please secure your account immediately or contact support.\n\nThis is an automated message. Please do not reply to this email.`,
@@ -39,7 +42,7 @@ const sendOtpEmail = async (email, otp) => {
   };
 
   // Check if SMTP is configured. If not, log to console/logger as development fallback
-  const isSmtpConfigured = process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS;
+  const isSmtpConfigured = env && env.EMAIL_HOST && env.EMAIL_USER && env.EMAIL_PASS;
 
   if (!isSmtpConfigured) {
     logger.warn(`SMTP is not fully configured. Falling back to logging OTP for: ${email}`);
@@ -51,13 +54,14 @@ const sendOtpEmail = async (email, otp) => {
   }
 
   try {
+    const transporter = getTransporter(env);
     const info = await transporter.sendMail(mailOptions);
     logger.info(`OTP email successfully sent to ${email}. Message ID: ${info.messageId}`);
     return info;
   } catch (error) {
-    logger.error(`Failed to send OTP email to ${email}`, error);
+    logger.error(`Failed to send OTP email to ${email}: ${error.message}`);
     // Even if sending fails, we can log the OTP in non-production for debugging
-    if (process.env.NODE_ENV !== 'production') {
+    if (env.NODE_ENV !== 'production') {
       logger.info(`[FALLBACK LOG due to error] OTP for ${email} is: ${otp}`);
     }
     throw error;
@@ -68,10 +72,11 @@ const sendOtpEmail = async (email, otp) => {
  * Send a Password Reset email to the user
  * @param {string} email 
  * @param {string} resetUrl 
+ * @param {object} env
  */
-const sendPasswordResetEmail = async (email, resetUrl) => {
+export const sendPasswordResetEmail = async (email, resetUrl, env) => {
   const mailOptions = {
-    from: process.env.EMAIL_FROM || process.env.EMAIL_USER || '"Ecommerce Support" <no-reply@ecommerce.com>',
+    from: env.EMAIL_FROM || env.EMAIL_USER || '"Ecommerce Support" <no-reply@ecommerce.com>',
     to: email,
     subject: 'Your Password Reset Request (Valid for 15 minutes)',
     text: `Hello,\n\nYou requested a password reset. Please click on the link below to reset your password:\n\n${resetUrl}\n\nIf you did not request this, please ignore this email. Your password will remain unchanged.\n\nThis link is valid for 15 minutes.`,
@@ -92,7 +97,7 @@ const sendPasswordResetEmail = async (email, resetUrl) => {
     `,
   };
 
-  const isSmtpConfigured = process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS;
+  const isSmtpConfigured = env && env.EMAIL_HOST && env.EMAIL_USER && env.EMAIL_PASS;
 
   if (!isSmtpConfigured) {
     logger.warn(`SMTP is not fully configured. Falling back to logging Password Reset URL for: ${email}`);
@@ -104,19 +109,15 @@ const sendPasswordResetEmail = async (email, resetUrl) => {
   }
 
   try {
+    const transporter = getTransporter(env);
     const info = await transporter.sendMail(mailOptions);
     logger.info(`Password reset email successfully sent to ${email}. Message ID: ${info.messageId}`);
     return info;
   } catch (error) {
-    logger.error(`Failed to send password reset email to ${email}`, error);
-    if (process.env.NODE_ENV !== 'production') {
+    logger.error(`Failed to send password reset email to ${email}: ${error.message}`);
+    if (env.NODE_ENV !== 'production') {
       logger.info(`[FALLBACK LOG due to error] Reset URL for ${email} is: ${resetUrl}`);
     }
     throw error;
   }
-};
-
-module.exports = {
-  sendOtpEmail,
-  sendPasswordResetEmail,
 };

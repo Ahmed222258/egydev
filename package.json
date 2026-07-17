@@ -2,6 +2,7 @@
   "dependencies": {
     "axios": "^1.18.1",
     "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -11,6 +12,7 @@
     "express-rate-limit": "^8.5.2",
     "express-validator": "^7.3.2",
     "helmet": "^8.2.0",
+    "hono": "^4.12.30",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.1",
     "morgan": "^1.11.0",
@@ -22,15 +24,15 @@
   },
   "name": "ecommerce-project",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "npx wrangler deploy",
+    "dev": "npx wrangler dev --port 8000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "description": ""
 }

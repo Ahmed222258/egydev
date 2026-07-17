@@ -1361,3 +1361,4 @@ Error: No recipients defined
 2026/07/16 00:44:04 | INFO | Returned cached subcategorie list
 2026/07/16 00:44:04 | INFO | Returned cached subcategorie list
 2026/07/16 00:58:32 | INFO | OTP email successfully sent to a7medfarouk135@gmail.com. Message ID: <efd2b028-d51a-deb0-a844-2db84604d520@gmail.com>
+2026/07/16 21:58:02 | INFO | Initializing payment session cleanup worker (runs every 5 minutes)...

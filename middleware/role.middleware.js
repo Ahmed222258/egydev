@@ -1,8 +1,9 @@
-exports.authorize = (...allowedRoles)=>{
-    return (req,res,next)=>{
-    if(!allowedRoles.includes(req.user.role)){
-        return res.status(403).json({message:'Access denied: not allowed role'})
+export const authorize = (...allowedRoles) => {
+  return async (c, next) => {
+    const user = c.get('user');
+    if (!user || !allowedRoles.includes(user.role)) {
+      return c.json({ message: 'Access denied: not allowed role' }, 403);
     }
-    next();
-    }
-}
+    await next();
+  };
+};

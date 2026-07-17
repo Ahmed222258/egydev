@@ -1,22 +1,28 @@
-const jwt = require('jsonwebtoken');
-const User = require('../model/user.model');
+import jwt from 'jsonwebtoken';
+import User from '../model/user.model.js';
+import { getCookie } from 'hono/cookie';
 
-exports.authenticate = async (req, res, next) => {
-  let token = req.cookies.token;
+export const authenticate = async (c, next) => {
+  let token = getCookie(c, 'token');
 
-  if (!token && req.headers.authorization?.startsWith('Bearer ')) {
-    token = req.headers.authorization.split(' ')[1];
+  const authHeader = c.req.header('Authorization');
+  if (!token && authHeader?.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1];
   }
 
-  // FIX #1: Added `return` to stop execution after sending 401
-  if (!token)
-    return res.status(401).json({ message: 'No Token Provided' });
+  if (!token) {
+    return c.json({ message: 'No Token Provided' }, 401);
+  }
+
   try {
-    const decode = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decode.id).select('-password');
-    if (!req.user) return res.status(401).json({ message: 'User not found' });
-    next();
+    const decode = jwt.verify(token, c.env.JWT_SECRET);
+    const user = await User.findById(decode.id).select('-password');
+    if (!user) {
+      return c.json({ message: 'User not found' }, 401);
+    }
+    c.set('user', user);
+    await next();
   } catch (err) {
-    return res.status(403).json({ message: 'Token invalid or expired' });
+    return c.json({ message: 'Token invalid or expired' }, 403);
   }
 };

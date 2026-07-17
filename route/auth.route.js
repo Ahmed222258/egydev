@@ -1,12 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../controller/auth.controller');
+import { Hono } from 'hono';
+import * as authController from '../controller/auth.controller.js';
 
-router.post('/login',auth.login);
-router.post('/verify-otp', auth.verifyOtp);
-router.post('/resend-otp', auth.resendOtp);
-router.post('/forgot-password', auth.forgotPassword);
-router.patch('/reset-password/:token', auth.resetPassword);
-router.post('/logout', auth.logout);
+const authRoutes = new Hono();
 
-module.exports = router;
+authRoutes.post('/login', authController.login);
+authRoutes.post('/verify-otp', authController.verifyOtp);
+authRoutes.post('/resend-otp', authController.resendOtp);
+authRoutes.post('/forgot-password', authController.forgotPassword);
+authRoutes.patch('/reset-password/:token', authController.resetPassword);
+authRoutes.post('/logout', authController.logout);
+
+export default authRoutes;
